@@ -1,0 +1,98 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Receive Money{% endblock page_title %}
+
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+<link rel="stylesheet" href="{% static "css/transfer1.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+{% include "includes/error_alert.html" %}
+
+<section id="menu-options">
+    <a href=""><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+    <ul class="menu-items">
+        <li><a class="current-item2" href="{% url "dashboard" %}"><i class="fa-solid fa-archway"></i>Dashboard</a></li>
+        <li><a class="current-item2" href="{% url "transfer1" %}"><i class="fa-regular fa-paper-plane"></i> Transfer</a></li>
+        <li><a class="current-item" href="{% url "receive1" %}"><i class="fa-solid fa-money-bill-transfer"></i>Receive</a></li>
+        <li><a class="current-item2" href="{% url "transaction" %}"><i class="fa-solid fa-receipt"></i>Transactions</a></li>
+        <li><a class="current-item2" href="{% url "account" %}"><i class="fa-regular fa-user"></i>Account</a></li>
+        <li><a class="current-item2" href=""><i class="fa-solid fa-headset"></i>Support</a></li>
+        <li><a class="current-item2" href="{% url "logout" %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
+
+</section>
+{% include "includes/nav.html" %}
+
+<section id="transfer1">
+    <div class="trans-box1">
+        <div class="trans-head">
+            <h4>Request a Payment</h4>
+        </div>
+        <p class="step-display">Step 1 of 3</p>
+        <div class="recent-box">
+        <h5>Choose Recipient</h5>
+        {% if recent %}
+        <div class="recent">
+            <h6 class="re-text">Recents</h6>
+            <div class="all-recent">
+                {% for trans in recent %}
+                <a href="{% url "transfer2" trans.account_number %}">
+                <div class="recent-item">
+                    {% if trans.account_image %}
+                        <img src="{{ trans.account_image.url }}" alt="">
+                    {% else %}
+                        <img src="{% static "images/blank-pic.jpg" %}" alt="">
+                    {% endif %}
+                    <div class="recent-text">
+                        <h6>{{ trans.account_name }}</h6>
+                        <p>{{ trans.account_number }}</p>
+                    </div>
+                </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        </div>
+
+        <form action="" method="GET">
+            {% csrf_token %}
+            <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+            <input type="text" name="account" placeholder="Enter account number, phone number or email address">
+
+        </form>
+        
+        {% if account_searched %}
+        <div class="search-result">
+            <p>Recipient found</p>
+            <div class="all-search">
+                {% for account in account_searched %}
+                <div class="search-item">
+                    <div class="image-and-text">
+                        {% if account.account_image %}
+                        <img src="{{ account.account_image.url }}" alt="">
+                        {% else %}
+                        <img src="{% static "images/blank-pic.jpg" %}" alt="">
+                        {% endif %}
+                        <div class="recent-text">
+                            <h6>{{ account.account_name }}</h6>
+                            <p>{{ account.account_number }}</p>
+                        </div>
+                    </div>
+                    <a href="{% url "receive2" account.account_number %}" class="choose-btn">Choose</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock contents %}

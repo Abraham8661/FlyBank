@@ -1,0 +1,210 @@
+
+body {
+    background: var(--Background, #F5F5F5);
+    overflow-x: hidden;
+}
+
+#login-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10rem;
+}
+
+#login-section .hero-image {
+    width: 40vw;
+    height: 100rem;
+    flex-shrink: 0;
+    position: fixed;
+}
+
+#login-section .hero-image img {
+    width: 40vw;
+    height: 100rem;
+    flex-shrink: 0;
+}
+
+#login-section .hero-overlay {
+    width: 40vw;
+    height: 100rem;
+    position: absolute;
+    z-index: 1;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, 0.60);
+}
+
+#login-section .nav-bar {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8.3125rem;
+    margin-top: 2rem;
+    margin-left: 5rem;
+    max-width: 90rem;
+}
+
+#login-section .nav-bar img {
+    width: 7.625rem;
+    height: 3.25rem;
+    margin-top: 22rem;
+}
+
+#login-section .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    z-index: 2;
+    position: absolute;
+    margin-top: 50rem;
+    margin-left: 5rem;
+    width: 30rem;
+    gap: 1.5rem;
+}
+
+#login-section .hero-text h1 {
+    color: #FFF;
+    text-align: left;
+    text-shadow: 4px 10px 48px rgba(0, 0, 0, 0.37);
+    font-family: Lato;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 0.03125rem;
+}
+
+#login-section .hero-text p {
+    color: #FFF;
+    text-align: left;
+    font-family: Lato;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#login-section .hero-text a {
+    display: inline-flex;
+    padding: 1.25rem 3.25rem;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    font-size: 1.2rem;
+    gap: 0.625rem;
+    margin-top: 2rem;
+    border-radius: 0.625rem;
+    background: var(--Primary-Color, #421CAC);
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.06);
+}
+
+#login-section .hero-text a:hover {
+    background-color: black;
+}
+
+#login-section .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    width: 40rem;
+    margin-left: 48rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+#login-section .login-form h2 {
+    color: #003333;
+    font-family: Lato;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+#login-section #google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: 3rem;
+    width: 32rem;
+    color: #000;
+    font-size: 1.2rem;
+    padding: 0.3125rem 1.875rem;
+    align-items: center;
+    border-radius: 0.625rem;
+    background: none;
+    border: 1px solid #000;
+}
+
+#login-section #google-btn:hover {
+    background: var(--Button-colour, #C30);
+    color: #FFF;
+    border: none;
+}
+
+#login-section .login-form .form-control {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    width: 35.6rem;
+}
+
+.login-form .form-control label {
+    font-size: 1.2rem;
+}
+
+.login-form .form-control input {
+    padding: 1.2rem;
+    width: 33.5rem;
+    font-size: 1rem;
+    background: none;
+    border-radius: 0.625rem;
+    border: 1px solid #000;
+}
+
+.login-form .errorlist {
+  list-style: none;
+  margin: 0.5rem 0;
+  padding: 0;
+  color: #680000;
+}
+
+.login-form .errors input {
+  border-color: #680000;
+  background-color: #fde3e3;
+}
+
+.login-form .errors label {
+  color: #680000;
+}
+
+#signin-form-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 36.05rem;
+    margin-left: 0.9rem;
+    padding: 1.2rem;
+    color: #FFF;
+    background: var(--Button-colour, #C30);
+    font-size: 1.2rem;
+    border-radius: 0.625rem;
+}
+
+#signin-form-btn:hover {
+    background-color: #000;
+    color: #FFF;
+    border: none;
+}
+
+.login-form a {
+    color: #000;
+}

@@ -1,0 +1,65 @@
+#transfer3 .trans-box3 .success-dialog {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 67.1875rem;
+}
+
+.trans-box3 .success-dialog img {
+    width: 10.875rem;
+}
+
+.trans-box3 .success-dialog h6 {
+    color: #009A49;
+    font-family: Open Sans;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+.trans-box3 .transfer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 67.1875rem;
+}
+
+.trans-box3 .transfer-btn .previous-btn {
+    display: flex;
+    color: #000;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: 1px solid #000;
+}
+
+.trans-box3 .transfer-btn .previous-btn:hover {
+    background-color: #C30;
+    border: none;
+    color: #FFF;
+}
+
+.trans-box3 .transfer-btn #complete-btn {
+    display: flex;
+    color: white;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    background-color: #C30;
+}
+
+.trans-box3 .transfer-btn #complete-btn:hover {
+    background-color: rgb(9, 9, 9);
+    border: none;
+    color: #FFF;
+}

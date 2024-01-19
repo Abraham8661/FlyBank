@@ -1,0 +1,25 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+<section id="top-nav">
+        <p>{{ greeting }}, {{ current_user }}</p>
+        <h5>Banking Hall</h5>
+        <div class="right-icons">
+            <a href=""><i class="fa-solid fa-headset"></i></a>
+            <a href="{% url "notification" %}"><i class="fa-regular fa-bell"></i></a>
+            {% if account.account_image %}
+            <img src="{{ account.account_image.url }}" alt="">
+            {% else %}
+            <img src="{% static "images/blank-pic.png" %}" alt="">
+            {% endif %}
+        </div>
+
+</section>
+
+{% endblock contents %}

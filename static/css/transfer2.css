@@ -1,0 +1,238 @@
+#transfer2 {
+    display: flex;
+    margin-left: 15.5rem;
+    padding-top: 5rem;
+    padding-left: 5rem;
+    gap: 3rem;
+    width: 100vw;
+    align-items: flex-start;
+    margin-bottom: 5rem;
+}
+
+#transfer2 .trans-box2 {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+    width: 67.1875rem;
+    border-radius: 1.25rem;
+    background: #FFF;
+    box-shadow: 0px 17px 20px 0px rgba(99, 122, 122, 0.05);
+}
+
+#transfer2 .trans-box2 .trans-head {
+    display: flex;
+    width: 67.1875rem;
+    padding: 0.625rem 0rem;
+    align-items: center;
+    gap: 0.625rem;
+    border-bottom: 1px solid rgba(108, 117, 125, 0.50);
+}
+
+#transfer2 .trans-box2 .trans-head h4 {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#transfer2 .trans-box2 .step-display {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#transfer2 .trans-box2 .set-amount {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+
+#transfer2 .trans-box2 .search-item {
+    display: flex;
+    padding: 1.25rem 0rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 66.1875rem;
+    border-top: 1px solid rgba(108, 117, 125, 0.10);
+    border-bottom: 1px solid rgba(108, 117, 125, 0.10);
+}
+
+#transfer2 .trans-box2 .search-item .image-and-text {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+#transfer2 .trans-box2 .search-item img {
+    width: 3.6875rem;
+    height: 3.6875rem;
+    border-radius: 3.6875rem;
+ }
+
+#transfer2 .trans-box2 .search-item .recent-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    align-items: flex-start;
+    justify-content: left;
+ }
+
+#transfer2 .trans-box2 .search-item .recent-text h6 {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+#transfer2 .trans-box2 .search-item .recent-text p {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+#transfer2 .trans-box2 .search-item .choose-btn {
+    display: flex;
+    color: #000;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: 1px solid #000;
+  }
+
+#transfer2 .trans-box2 .search-item .choose-btn:hover {
+    background: var(--Button-colour, #C30);
+    border: none;
+    color: #FFF;
+  }
+
+#transfer2 .trans-box2 .transfer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+#transfer2 .trans-box2 .transfer-form .amount-details {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 65.1875rem;
+    max-width: 67.1875rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    border-radius: 0.625rem;
+    background: rgba(0, 51, 51, 0.05);
+}
+
+#transfer2 .trans-box2 .transfer-form .amount-details .amount-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#transfer2 .trans-box2 .transfer-form .amount-details .amount-item label {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+}
+
+.trans-box2 .transfer-form .amount-details .amount-item input {
+    display: flex;
+    padding: 1rem;
+    font-size: 1.25rem;
+    width: 62.55rem;
+    max-width: 67.1875rem;
+    border-radius: 0.625rem;
+    border: 1px solid var(--Grey, #6C757D);
+    background: none;
+  }
+
+  #transfer2 .trans-box2 .transfer-form .fees {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 67.1875rem;
+  }
+
+  #transfer2 .trans-box2 .transfer-form .total-to-pay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 67.1875rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(108, 117, 125, 0.10);
+  }
+
+  #transfer2 .trans-box2 .transfer-form .total-to-pay h6 {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+#transfer2 .trans-box2 .transfer-btn {
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+    width: 67.1875rem;
+    gap: 2rem;
+}
+
+#transfer2 .trans-box2 .transfer-btn .previous-btn {
+    display: flex;
+    color: #000;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: 1px solid #000;
+}
+
+#transfer2 .trans-box2 .transfer-btn .previous-btn:hover {
+    background-color: #C30;
+    border: none;
+    color: #FFF;
+}
+
+#transfer2 .trans-box2 .transfer-btn .next-btn {
+    display: flex;
+    color: white;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    background-color: #C30;
+}
+
+#transfer2 .trans-box2 .transfer-btn .next-btn:hover {
+    background-color: rgb(9, 9, 9);
+    border: none;
+    color: #FFF;
+}

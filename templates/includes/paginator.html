@@ -1,0 +1,32 @@
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+<link rel="stylesheet" href="{% static "css/transaction.css" %}">
+{% endblock css_files %}
+
+{% block content %}
+
+{% if search_model.has_other_pages %}
+<div class="page-buttons">
+            {% if search_model.has_previous %}
+            <a href="?page={{ search_model.previous_page_number }}" class="page">Prev</a>
+            {% endif %}
+
+        {% for page in custom_range %}
+
+            {% if page == search_model.number %}
+            <a href="?page={{ page }}" class="current-page">{{ page }}</a>
+            {% else %}
+            <a href="?page={{ page }}" class="page">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+
+            {% if search_model.has_next %}
+            <a href="?page={{ search_model.next_page_number }}" class="page">Next</a>
+            {% endif %}
+
+</div>
+{% endif %}
+
+{% endblock content %}

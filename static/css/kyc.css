@@ -1,0 +1,542 @@
+#transfer1 {
+    display: flex;
+    margin-left: 15.5rem;
+    padding-top: 5rem;
+    padding-left: 5rem;
+    gap: 3rem;
+    width: 100vw;
+    align-items: flex-start;
+    margin-bottom: 5rem;
+}
+
+#transfer1 .profile-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    width: 17rem;
+    border-radius: 1.25rem;
+    background: #FFF;
+    box-shadow: 0px 17px 20px 0px rgba(99, 122, 122, 0.05);
+}
+
+#transfer1 .profile-box .profile-top {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+#transfer1 .profile-box .profile-top img {
+    width: 10.125rem;
+    height: 10.125rem;
+    border-radius: 11.125rem;
+}
+
+#transfer1 .profile-box .profile-top h5 {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+#transfer1 .profile-box .profile-top .active {
+    color: #C30;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#transfer1 .profile-box .account-details {
+    display: flex;
+    padding-top: 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    border-top: 1px solid rgba(108, 117, 125, 0.50);
+}
+
+#transfer1 .profile-box .account-details .detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 17rem;
+}
+
+#transfer1 .profile-box .delete-account {
+    display: flex;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    color: #C30;
+    border-radius: 0.625rem;
+    border: 1px solid #C30;
+    background: #FFF;
+}
+
+#transfer1 .profile-box .delete-account:hover {
+    background-color: #C30;
+    color: #FFF;
+    border: none;
+}
+
+
+
+#transfer1 #trans-box1 {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+    width:  43.1875rem;
+    border-radius: 1.25rem;
+    background: #FFF;
+    box-shadow: 0px 17px 20px 0px rgba(99, 122, 122, 0.05);
+}
+
+#transfer1 #trans-box1 .box1-head {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+#transfer1 #trans-box1 .box1-head .account-sec {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: flex;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-bottom: 1px solid #000;
+}
+
+#transfer1 #trans-box1 .box1-head .account-sec:hover {
+    cursor: pointer;
+    color: #C30;
+}
+
+#transfer1 #trans-box1 .box1-head #security-sec {
+    color: var(--Grey, #6C757D);
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#transfer1 #trans-box1 .box1-head #security-sec:hover {
+    cursor: pointer;
+    color: #C30;
+}
+
+#transfer1 #trans-box1 .profile-pic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    width:  41.1875rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    background: rgba(0, 51, 51, 0.05);
+}
+
+#transfer1 #trans-box1 .profile-pic .image-sec {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+#trans-box1 .profile-pic .image-sec #imagePreview {
+    width: 5.75rem;
+    height: 5.75rem;
+    border-radius: 5.75rem;
+}
+#trans-box1 .profile-pic .image-sec #imagePreview img {
+    width: 5.75rem;
+    height: 5.75rem;
+    border-radius: 5.75rem;
+}
+
+#trans-box1 .profile-pic .image-sec h5 {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#trans-box1 .profile-pic .upload-btn {
+    display: flex;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: 1px solid #000;
+}
+
+#trans-box1 .profile-pic .upload-btn:hover {
+    background-color: #C30;
+    color: #FFF;
+    border: none;
+}
+
+#trans-box1 .profile-pic .upload-btn #new-photo {
+    opacity: 0;
+    position: absolute;
+    margin-left: 5rem;
+}
+
+#trans-box1 .user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+#trans-box1 .user-details .first-and-last-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:  43.1875rem;
+
+}
+
+#trans-box1 .user-details .first-and-last-name .name-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+
+#trans-box1 .user-details .first-and-last-name .name-box input {
+    width: 19rem;
+    padding: 1rem;
+    font-size: 1rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(0, 0, 0, 0.50);
+}
+
+#trans-box1 .user-details .first-and-last-name .name-box h6 {
+    width: 19rem;
+    padding: 1rem;
+    color: #C30;
+    font-size: 1rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(0, 0, 0, 0.50);
+    background: rgba(0, 51, 51, 0.05);
+}
+
+
+
+#trans-box1 .user-details .address .name-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#trans-box1 .user-details .address .name-box input {
+    width:  41.1875rem;
+    padding: 1rem;
+    font-size: 1rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(0, 0, 0, 0.50);
+}
+
+
+
+#trans-box1 .user-details .birth-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:  43.1875rem;
+}
+
+#trans-box1 .user-details .birth-section .name-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#trans-box1 .user-details .birth-section .name-box input, select {
+    width:  13rem;
+    padding: 1rem;
+    font-size: 1rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(0, 0, 0, 0.50);
+}
+
+#trans-box1 .user-details .id-card-sec {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+#trans-box1 .user-details .id-card-sec .both-sides {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:  43.1875rem;
+}
+
+#trans-box1 .user-details .id-card-sec .both-sides .card-sec {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-details .id-card-sec .both-sides .card-sec #id-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20.25rem;
+    height: 10rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(108, 117, 125, 0.50);
+}
+
+.id-card-sec .both-sides .card-sec #FrontCard {
+    opacity: 0%;
+    position: absolute;
+    margin-left: 5rem;
+    margin-bottom: 2.5rem;
+}
+.id-card-sec .both-sides .card-sec #add-btn{
+    position: absolute;
+
+    margin-bottom: 2.5rem;
+}
+
+
+.user-details .id-card-sec .both-sides .card-sec #id-card-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20.25rem;
+    height: 10rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(108, 117, 125, 0.50);
+}
+
+.id-card-sec .both-sides .card-sec #BackCard {
+    opacity: 0%;
+    position: absolute;
+    margin-left: 5rem;
+    margin-bottom: 2.5rem;
+}
+
+
+
+#trans-box1 .user-details .sign-sec {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+#trans-box1 .user-details .sign-sec .both-sides {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width:  43.1875rem;
+}
+
+#trans-box1 .user-details .sign-sec .both-sides .card-sec {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.user-details .sign-sec .both-sides .card-sec #sign-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20.25rem;
+    height: 10rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(108, 117, 125, 0.50);
+}
+
+.sign-sec .both-sides .card-sec #SignCard {
+    opacity: 0%;
+    position: absolute;
+    margin-left: 5rem;
+    margin-top: 7rem;
+}
+
+.user-details .sign-sec .both-sides .card-sec #pass-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20.25rem;
+    height: 10rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(108, 117, 125, 0.50);
+}
+
+.sign-sec .both-sides .card-sec #PassCard {
+    opacity: 0%;
+    position: absolute;
+    margin-left: 5rem;
+    margin-top: 7rem;
+}
+.sign-sec .both-sides .card-sec #add-btn{
+    position: absolute;
+    margin-top: 7rem;
+    margin-left: 9.9rem;
+}
+
+
+#trans-box1 .user-details .save-changes {
+    display: flex;
+    font-size: 1rem;
+    color: #FFF;
+    padding: 1.25rem 2.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    background: var(--Button-colour, #C30);
+}
+
+#trans-box1 .user-details .save-changes:hover {
+    background-color: black;
+}
+
+
+
+#transfer1 #trans-box2 {
+    display: none;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+    width:  43.1875rem;
+    border-radius: 1.25rem;
+    background: #FFF;
+    box-shadow: 0px 17px 20px 0px rgba(99, 122, 122, 0.05);
+}
+
+#transfer1 #trans-box2 .box1-head {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+#transfer1 #trans-box2 .box1-head #security-sec {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: flex;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-bottom: 1px solid #000;
+}
+
+#transfer1 #trans-box2 .box1-head #security-sec:hover {
+    cursor: pointer;
+    color: #C30;
+}
+#transfer1 #trans-box2 .box1-head #account-sec {
+    color: var(--Grey, #6C757D);
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+#transfer1 #trans-box2 .box1-head #account-sec:hover {
+    cursor: pointer;
+    color: #C30;
+}
+
+#transfer1 #trans-box2 .password-head {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#transfer1 #trans-box2 .password-head h6 {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#transfer1 #trans-box2 .password-head p {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#transfer1 #trans-box2 .address .name-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+
+#transfer1 #trans-box2 .address .name-box input {
+    width:  41.1875rem;
+    padding: 1rem;
+    font-size: 1rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(0, 0, 0, 0.50);
+    background: rgba(0, 51, 51, 0.05);
+}
+
+#transfer1 #trans-box2 .save-changes {
+    display: flex;
+    font-size: 1rem;
+    color: #FFF;
+    padding: 1.25rem 2.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    background: var(--Button-colour, #C30);
+}
+
+#transfer1 #trans-box2 .save-changes:hover {
+    background-color: black;
+}

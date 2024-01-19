@@ -1,0 +1,407 @@
+#transfer3 {
+    display: flex;
+    margin-left: 15.5rem;
+    padding-top: 5rem;
+    padding-left: 5rem;
+    gap: 3rem;
+    width: 100vw;
+    align-items: flex-start;
+    margin-bottom: 5rem;
+}
+
+#transfer3 .trans-box3 {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+    width: 67.1875rem;
+    border-radius: 1.25rem;
+    background: #FFF;
+    box-shadow: 0px 17px 20px 0px rgba(99, 122, 122, 0.05);
+}
+
+#transfer3 .trans-box3 .trans-head {
+    display: flex;
+    width: 67.1875rem;
+    padding: 0.625rem 0rem;
+    align-items: center;
+    gap: 0.625rem;
+    border-bottom: 1px solid rgba(108, 117, 125, 0.50);
+}
+
+#transfer3 .trans-box3 .trans-head h4 {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#transfer3 .trans-box3 .step-display {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#transfer3 .trans-box3 .set-amount {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+
+#transfer3 .trans-box3 .search-item {
+    display: flex;
+    padding: 1.25rem 0rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 66.1875rem;
+    border-top: 1px solid rgba(108, 117, 125, 0.10);
+    border-bottom: 1px solid rgba(108, 117, 125, 0.10);
+}
+
+#transfer3 .trans-box3 .search-item .image-and-text {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+#transfer3 .trans-box3 .search-item img {
+    width: 3.6875rem;
+    height: 3.6875rem;
+    border-radius: 3.6875rem;
+ }
+
+#transfer3 .trans-box3 .search-item .recent-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    align-items: flex-start;
+    justify-content: left;
+ }
+
+#transfer3 .trans-box3 .search-item .recent-text h6 {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+#transfer3 .trans-box3 .search-item .recent-text p {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+#transfer3 .trans-box3 .search-item .choose-btn {
+    display: flex;
+    color: #000;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: 1px solid #000;
+  }
+
+#transfer3 .trans-box3 .search-item .choose-btn:hover {
+    background: var(--Button-colour, #C30);
+    border: none;
+    color: #FFF; 
+  }
+
+#transfer3 .trans-box3 .payment-details {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 2rem;
+    align-items: flex-start;
+    width: 64.1875rem;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(108, 117, 125, 0.50);
+}
+
+#transfer3 .trans-box3 .payment-details .top-text {
+    display: flex;
+    width: 64.1875rem;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(108, 117, 125, 0.50);
+}
+
+#transfer3 .trans-box3 .payment-details .top-text h5 {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#transfer3 .trans-box3 .payment-details .choose-btn {
+    display: flex;
+    color: #000;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: 1px solid #000;
+  }
+
+#transfer3 .trans-box3 .payment-details .choose-btn:hover {
+    background: var(--Button-colour, #C30);
+    border: none;
+    color: #FFF; 
+  }
+
+.trans-box3 .payment-details .trans-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-content: left;
+}
+
+.trans-box3 .payment-details .trans-details .one-detail {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.trans-box3 .payment-details .trans-details .one-detail p {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 23.25rem;
+}
+
+.payment-details .trans-details .one-detail h6 {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+
+#transfer3 .trans-box3 .attach-doc{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 2rem;
+    align-items: flex-start;
+    width: 64.1875rem;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(108, 117, 125, 0.50);
+}
+
+#transfer3 .trans-box3 .attach-doc .top-text {
+    display: flex;
+    width: 64.1875rem;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(108, 117, 125, 0.50);
+}
+
+#transfer3 .trans-box3 .attach-doc .top-text h5 {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#transfer3 .trans-box3 .attach-doc .doc-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#transfer3 .trans-box3 .attach-doc .all-documents {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.trans-box3 .attach-doc .all-documents .document {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.trans-box3 .attach-doc .all-documents .document .upload {
+    display: flex;
+    padding: 0.625rem 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.3125rem;
+    border: 1px solid #000;
+}
+
+.trans-box3 .bottom-sec {
+    display: flex;
+    align-items: flex-end;
+    width: 66.1875rem;
+    justify-content: right;
+}
+
+.trans-box3 .transfer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.trans-box3 .transfer-btn .previous-btn {
+    display: flex;
+    color: #000;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: 1px solid #000;
+}
+
+.trans-box3 .transfer-btn .previous-btn:hover {
+    background-color: #C30;
+    border: none;
+    color: #FFF;
+}
+
+.trans-box3 .transfer-btn #complete-btn {
+    display: flex;
+    color: white;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    background-color: #C30;
+}
+
+.trans-box3 .transfer-btn #complete-btn:hover {
+    background-color: rgb(9, 9, 9);
+    border: none;
+    color: #FFF;
+}
+
+#transfer-box #confirm-dialog {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    opacity: 50%;
+    width: 100vw;
+    height: 100vh;
+}
+
+#transfer-box {
+    z-index: 3;
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#transfer-box .confirm-transfer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    position: fixed;
+    padding: 2rem;
+    z-index: 3;
+    width: 28.6875rem;
+    height: 20.375rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: #FFF;
+}
+
+#transfer-box .confirm-transfer .top-sec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 28.6875rem;
+
+}
+
+#transfer-box .confirm-transfer .top-sec h5 {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#transfer-box .confirm-transfer p {
+    width: 23.25rem;
+    color: #000;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#transfer-box .confirm-transfer input {
+    width: 24.375rem;
+    height: 1rem;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 0.625rem;
+    border: 1px solid var(--Grey, #6C757D);
+    padding: 2rem;
+}
+
+#transfer-box .confirm-transfer #cancel-btn {
+    background: none;
+    font-size: 1rem;
+}
+
+#transfer-box .confirm-transfer .confirm-btn {
+    display: flex;
+    color: #FFF;
+    font-size: 1rem;
+    width: 28.5625rem;
+    padding: 1.25rem 2.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    background: var(--Button-colour, #C30);
+}
+
+#transfer-box .confirm-transfer .confirm-btn:hover {
+    background-color: #000;
+}

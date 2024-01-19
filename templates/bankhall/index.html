@@ -1,0 +1,315 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Welcome to FlyBank - The new reality of banking {% endblock page_title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/index.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+{% include "includes/error_alert.html" %}
+<section id="hero-section">
+    <nav class="nav-bar">
+        <a class="logo-link" href=""><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+        
+        <ul class="nav-links">
+            <li><a class="current-item" href="">Home</a></li>
+            <li><a href="">Services</a></li>
+            <li><a href="">Features</a></li>
+            <li><a href="">About Us</a></li>
+            <li><a href="{% url "login" %}">Login</a></li>
+        </ul>
+        <a class="get-started-btn" href="{% url "signup" %}">Get Started</a>
+    </nav>
+
+     <div class="text-and-image">
+        <div class="text">
+            <h1>We Bring Digital Banking Close to You</h1>
+            <h5>FlyBank is the new reality of banking. Everything you need to build your financial future is available in our platform.</h5>
+            <a class="get-started-btn2" href="{% url "signup" %}">Get Started</a>
+        </div>
+        <div class="image">
+            <img src="{% static "images/girl-image.png" %}" alt="">
+        </div>
+    </div>
+</section>
+
+<section id="section2">
+    <h3>Trusted By Over 2000 Companies</h3>
+    <div class="all-trusted">
+        <div class="one-trusted">
+            <svg xmlns="http://www.w3.org/2000/svg" width="155" height="68" viewBox="0 0 155 68" fill="none">
+            <path d="M155 3.47754H3V67.4775" stroke="#CC3300" stroke-width="5"/>
+            </svg>
+            <div class="trusted-text">
+                <h5>204K</h5>
+                <p>Customers</p>
+            </div>
+        </div>
+        <div class="one-trusted">
+            <svg xmlns="http://www.w3.org/2000/svg" width="155" height="68" viewBox="0 0 155 68" fill="none">
+            <path d="M155 3.47754H3V67.4775" stroke="#CC3300" stroke-width="5"/>
+            </svg>
+            <div class="trusted-text">
+                <h5>56K</h5>
+                <p>Total Downloads</p>
+            </div>
+        </div>
+        <div class="one-trusted">
+            <svg xmlns="http://www.w3.org/2000/svg" width="155" height="68" viewBox="0 0 155 68" fill="none">
+            <path d="M155 3.47754H3V67.4775" stroke="#CC3300" stroke-width="5"/>
+            </svg>
+            <div class="trusted-text">
+                <h5>10K</h5>
+                <p>Five Star Reviews</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<div id="brands-logo">
+    <img src="{% static "images/logo1.png" %}" alt="">
+    <img src="{% static "images/logo2.png" %}" alt="">
+    <img src="{% static "images/logo3.png" %}" alt="">
+    <img src="{% static "images/logo4.png" %}" alt="">
+    <img src="{% static "images/logo5.png" %}" alt="">
+    <img src="{% static "images/logo6.png" %}" alt="">
+</div>
+
+<section id="section3">
+    <h6>Features</h6>
+    <h4>Why You Should Use FlyBank?</h4>
+    <p class="feature-text">We understand all your needs and we have put in place framework 
+        towards satisfying it. Our purpose is to make banking easier for you 
+        and that is done with our mobile application. The bank is now in your pocket.</p>
+
+    <div class="all-feature-cards">
+        <div class="one-feature-card">
+            <div class="circle">
+            <p>01</p>
+            </div>
+            <h5>No Charges</h5>
+            <p class="one-card-text">All your transactions on our platform is free from any form of charges. The era of bank charges is gone with us.</p>
+        </div>
+        <div class="one-feature-card">
+            <div class="circle">
+            <p>02</p>
+            </div>
+            <h5>High Security</h5>
+            <p class="one-card-text">Our platform is highly secured as we have 
+                utilized world class digital for the security of all
+                your tranactions and data.</p>
+        </div>
+        <div class="one-feature-card">
+            <div class="circle">
+            <p>03</p>
+            </div>
+            <h5>Online Banking</h5>
+            <p class="one-card-text">The days of visiting the bank are over, all the 
+                banking activites is done in your mobile phone, Our customer care is the 
+                best.</p>
+        </div>
+        <div class="one-feature-card">
+            <div class="circle">
+            <p>04</p>
+            </div>
+            <h5>User Friendly</h5>
+            <p class="one-card-text">From the design to usability,
+            our mobile application have been proven to capture all 
+            the need of our users.</p>
+        </div>
+    </div>
+</section>
+
+<section class="our-facilities-section">
+    <div class="left-section">
+        <div class="top-text">
+            <h6>Services</h6>
+            <h4>Our Unique Facilities</h4>
+            <p>Explore the wide range of services we have for you to make
+                your banking experience easier and better.</p>
+        </div>
+        <div class="all-facilities">
+            <div id="facility1">
+                <div class="text-item">
+                    <h6>Wireless Payments</h6>
+                    <button type="button" id="drowndown-btn"><i class="fa-solid fa-chevron-down" style="color: #FFF;"></i></button>
+                    <button type="button" id="drowndown-btn1"><i class="fa-solid fa-chevron-up" style="color: #FFF;"></i></button>
+                </div>
+                <p id="facility-content"></p>
+            </div>
+            <div id="facility1">
+                <div class="text-item">
+                    <h6>Online Credit Services</h6>
+                    <button type="button" id="drowndown-btn"><i class="fa-solid fa-chevron-down" style="color: #FFF;"></i></button>
+                    <button type="button" id="drowndown-btn1"><i class="fa-solid fa-chevron-up" style="color: #FFF;"></i></button>
+                </div>
+                <p id="facility-content"></p>
+            </div>
+            <div id="facility1">
+                <div class="text-item">
+                    <h6>Juicy Investments</h6>
+                    <button type="button" id="drowndown-btn"><i class="fa-solid fa-chevron-down" style="color: #FFF;"></i></button>
+                    <button type="button" id="drowndown-btn1"><i class="fa-solid fa-chevron-up" style="color: #FFF;"></i></button>
+                </div>
+                <p id="facility-content"></p>
+            </div>
+            <div id="facility1">
+                <div class="text-item">
+                    <h6>Cryptocurrency Transactions</h6>
+                    <button type="button" id="drowndown-btn"><i class="fa-solid fa-chevron-down" style="color: #FFF;"></i></button>
+                    <button type="button" id="drowndown-btn1"><i class="fa-solid fa-chevron-up" style="color: #FFF;"></i></button>
+                </div>
+                <p id="facility-content"></p>
+            </div>
+            <div id="facility1">
+                <div class="text-item">
+                    <h6>Instant Customer Support</h6>
+                    <button type="button" id="drowndown-btn"><i class="fa-solid fa-chevron-down" style="color: #FFF;"></i></button>
+                    <button type="button" id="drowndown-btn1"><i class="fa-solid fa-chevron-up" style="color: #FFF;"></i></button>
+                </div>
+                <p id="facility-content"></p>
+            </div>
+
+        </div>
+
+    </div>
+    <img src="{% static "images/App-screen.png" %}" alt="">
+
+</section>
+
+<section id="section5">
+    <div class="sec5-text">
+        <h4>Pay with cryptocurrency, quick and easy</h4>
+        <p>FlyBank enables you to send and receive money via cryptocurrency.
+        You can also make payments for bills, subscriptions using your 
+        favourite crypto assets.  </p>
+    </div>
+    <img src="{% static "images/App-screen2.png" %}" alt="">
+
+</section>
+
+<section id="section6">
+<div class="left-text">
+    <div class="text1">
+        <h4>Download Our Mobile App To Use Our Facillities Swiftly</h4>
+        <p>All your transactions are done online. You can have access to our services
+        more easily from your android phone or iphone.</p>
+    </div>
+    <div class="download-buttons">
+        <button>Get on Playstore</button>
+        <button>Get on Applestore</button>
+    </div>
+</div>
+<div class="image-box">
+</div>
+    <div class="girl-pic">
+        <img src="{% static "images/girl-phone.png" %}" alt="">
+    </div>
+</section>
+
+<footer>
+    <div class="left-sec">
+        <img src="{% static "images/flybank-logo2.png" %}" alt="">
+        <p>Multipurpose digital bank. Your tool to building your financial future.</p>
+        <div class="media-logos">
+            <i class="fa-brands fa-facebook" style="color: #ffffff;"></i>
+            <i class="fa-brands fa-instagram" style="color: #fffffd;"></i>
+            <i class="fa-brands fa-x-twitter" style="color: #ffffff;"></i>
+            <i class="fa-brands fa-linkedin" style="color: #ffffff;"></i>
+        </div>
+    </div>
+
+    <div class="footer-right">
+        <div class="footer-link">
+        <h6>About</h6>
+        <ul class="links">
+            <li><a href="">About Us</a></li>
+            <li><a href="">Offices</a></li>
+            <li><a href="">Careers</a></li>
+            <li><a href="">Blogs</a></li>
+            <li><a href="">Newsletter</a></li>
+        </ul>
+        </div>
+
+        <div class="footer-link">
+        <h6>Services</h6>
+        <ul class="links">
+            <li><a href="">Wireless Payments</a></li>
+            <li><a href="">Online Credit Services</a></li>
+            <li><a href="">Juicy Investments</a></li>
+            <li><a href="">Crypto tranactions</a></li>
+            <li><a href="">Customer Support</a></li>
+        </ul>
+        </div>
+
+        <div class="footer-link">
+        <h6>Support</h6>
+        <ul class="links">
+            <li><a href="">Help & Contact</a></li>
+            <li><a href="">FAQs</a></li>
+            <li><a href="">Testimonials</a></li>
+        </ul>
+        </div>
+
+        <div class="footer-link">
+        <h6>Legal</h6>
+        <ul class="links">
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Terms & Conditions</a></li>
+            <li><a href="">Terms of Use</a></li>
+        </ul>
+        </div>
+
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+        const arrow_btnup1 = document.getElementById("drowndown-btn");
+        const arrow_btndown1 = document.getElementById("drowndown-btn1");
+        const content1 = document.getElementById("facility-content");
+
+         // Add event listener to the checkbox
+        arrow_btnup1.addEventListener("click", function() {
+          // If the checkbox is checked, show the text area; otherwise, hide it
+          if (arrow_btnup1.click) {
+            content1.innerHTML = "With our platform, you can make payments and transfers to anywhere and at anytime. Our transactions are super fast.";
+            arrow_btndown1.style.display = "flex"
+            arrow_btnup1.style.display = "none"
+          } else {
+            content1.innerHTML = ""
+            arrow_btndown1.style.display = "none"
+            arrow_btnup1.style.display = "flex"
+          }
+        });
+
+         // Add event listener to the checkbox
+        arrow_btndown1.addEventListener("click", function() {
+          // If the checkbox is checked, show the text area; otherwise, hide it
+          if (arrow_btndown1.click) {
+            content1.innerHTML = "";
+            arrow_btndown1.style.display = "none"
+            arrow_btnup1.style.display = "flex"
+          } else {
+            content1.innerHTML = "With our platform, you can make payments and transfers to anywhere and at anytime. Our transactions are super fast."
+            arrow_btndown1.style.display = "none"
+            arrow_btnup1.style.display = "flex"
+          }
+        });
+
+       
+    </script>
+
+{% endblock contents %}

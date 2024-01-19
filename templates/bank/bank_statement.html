@@ -1,0 +1,117 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Bank Statement{% endblock page_title %}
+
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/bank_statement.css" %}">
+
+{% endblock css_files %}
+
+
+
+{% block contents %}
+
+<section id="logo-section">
+<img src="{% static "images/flybank-logo.png" %}" alt="" srcset="">
+
+<p>Statement Period: <b>01 Dec, 2023</b> to <b>08 Jun, 2023</b> </p>
+
+</section>
+
+<section class="customer-details">
+    <div class="sec1">
+        <p>Print Date: <b>1st of January, 2023</b></p>
+        <p>Account No: <b>0245637864</b></p>
+        <p>Account ID: <b>415263</b></p>
+        <p>Address: <b>No 82, Oron Road, Uyo</b></p>
+        <p>Phone Number: <b>08142637935</b></p>
+        <p>Email Address: <b>abrahamedet9@gmail.com</b></p>
+    </div>
+    <div class="sec2">
+        <p>Currency: <b>Naira</b></p>
+        <p>Total Debit: <b>14,500</b></p>
+        <p>Total Credit: <b>30,500</b></p>
+        <p>Opening Balance: <b>14,500</b></p>
+        <p>Closing Balance: <b>30,500</b></p>
+        <p>Current Balance: <b>30,500</b></p>
+    </div>
+</section>
+
+<div class="statement-title">
+    <h3>Bank Statement for <span style="color: #C30">{{ account.account_name|upper }}</span></h3>
+</div>
+
+<section id="trans-section">
+    <div class="trans-head">
+        <div class="date">
+        <p>Trans. Date</p>
+        </div>
+        <div class="reference">
+        <p>Reference</p>
+        </div>
+        <div class="reference">
+        <p>Debits</p>
+        </div>
+        <div class="reference">
+        <p>Credits</p>
+        </div>
+        <div class="reference">
+        <p>Balance</p>
+        </div>
+        <div class="branch">
+        <p>Originating Branch</p>
+        </div>
+        <div class="description">
+        <p>Description</p>
+        </div>
+    </div>
+</section>
+
+<section id="trans-section2">
+    <div class="trans-head">
+        <div class="date">
+        <p>Trans. Date</p>
+        </div>
+        <div class="reference">
+        <p>Reference</p>
+        </div>
+        <div class="reference">
+        <p>Debits</p>
+        </div>
+        <div class="reference">
+        <p>Credits</p>
+        </div>
+        <div class="reference">
+        <p>Balance</p>
+        </div>
+        <div class="branch">
+        <p>Originating Branch</p>
+        </div>
+        <div class="description">
+        <p>Description</p>
+        </div>
+    </div>
+</section>
+<button onclick="generatePDF()">Generate PDF</button>
+
+<div class="footer">
+<p>This is a computer generated bank statement, please address all enquiries to flybank@support.com</p>
+</div>
+
+
+<!-- Include html2pdf.js library -->
+<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
+<script>
+    function generatePDF() {
+        var element = document.body; // Choose the element you want to convert to PDF
+
+        html2pdf(element);
+    }
+</script>
+
+
+{% endblock contents %}

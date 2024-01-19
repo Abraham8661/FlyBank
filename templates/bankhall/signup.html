@@ -1,0 +1,49 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Create your account{% endblock page_title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/login.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+{% include "includes/error_alert.html" %}
+
+<section id="login-section">
+    <div class="hero-image">
+        <nav class="nav-bar">
+        <a href="{% url "home" %}"><img src="{% static "images/flybank-logo2.png" %}" alt="Flybank-logo"></a>
+        
+        </nav>
+        <div class="hero-text">
+            <h1>Welcome to the era of financial freedom</h1>
+            <p>We are dedicated to bring all banking activities to your doorstep. Enjoy bank at home.</p>
+        </div>
+        <div class="hero-overlay"></div>
+        <img src="{% static "images/logo-bg.png" %}" alt="bg-image">
+    </div> 
+
+    <form class="login-form" action="" method="POST">
+        {% csrf_token %}
+        <h2>Create your account!</h2>
+        {% comment "" %}
+        <a id="google-btn" href=""><i class="fa-brands fa-google"></i> Sign in with Google</a>
+        <p>Or use your email</p>
+        {% endcomment %}
+        {% for form in sign_up_form %}
+        <div class="form-control">
+            {{ form.label }}
+            {{ form.placeholder }}
+            {{ form }}
+            {{ form.errors }}
+        </div>
+        {% endfor %}
+        <button id="signin-form-btn">Signup</button>
+        <a href="{% url "login" %}">Already have an account? Login</a>
+
+    </form>
+
+{% endblock contents %}

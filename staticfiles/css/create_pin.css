@@ -1,0 +1,820 @@
+#menu-options {
+    position: fixed;
+    z-index: 1;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    gap: 5rem;
+    height: 100vh;
+    width: 17.5vw;
+    border-radius: 0rem 0.625rem 0.625rem 0rem;
+    background: #FFF;
+    box-shadow: 0px 17px 20px 0px rgba(99, 122, 122, 0.15);
+}
+
+#menu-options img {
+    width: 7rem;
+    height: auto;
+    padding-left: 3rem;
+}
+
+#menu-options .menu-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 0.3rem;
+}
+
+#menu-options .menu-items a {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    padding: 1rem 3rem 1rem 3rem;
+    line-height: normal;
+}
+
+#menu-options .menu-items .current-item, #menu-options .menu-items a:hover {
+    color: #FFF;
+    display: flex;
+    width: 11.3vw;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.3125rem;
+    background: var(--Bg-colour, #033);
+}
+#menu-options .menu-items .current-item2{
+    color: #000;
+    display: flex;
+    width: 11.3vw;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.3125rem;
+}
+
+#top-nav {
+    display: flex;
+    padding-left: 5rem;
+    position: fixed;
+    margin-left: 15.5rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 84.5vw;
+    height: 3.1875rem;
+    flex-shrink: 0;
+    border-bottom: 1px solid #000;
+    background: #FFF;
+}
+
+#top-nav h5 {
+    color: #033;
+    font-family: Open Sans;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#top-nav .right-icons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-right: 10rem;
+}
+
+#top-nav .right-icons img {
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: .875rem;
+}
+
+#dashboard {
+    display: flex;
+    margin-left: 15.5rem;
+    padding-top: 5rem;
+    padding-left: 5rem;
+    gap: 3rem;
+    width: 100vw;
+    align-items: flex-start;
+    margin-bottom: 5rem;
+}
+
+#dashboard .left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+#dashboard .left-section .amount-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+    width: 35.3125rem;
+    height: 12.4375rem;
+    border-radius: 1.25rem;
+    background: linear-gradient(178deg, #ED5F23 -19.18%, #5C0B06 78.07%);
+}
+
+.amount-box .money-sec {
+    display: flex;
+    width: 35.3125rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.amount-box .money-sec .amount-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.amount-box .money-sec .amount-right {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.amount-box .money-sec .amount-left p, .amount-box .money-sec .amount-right p {
+    color: #FFF;
+}
+
+.amount-box .money-sec .amount-left .amount1 {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.amount-box .money-sec .amount-left .amount1 h5 {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 3.125rem; /* 104.167% */
+}
+
+.amount-box .money-sec .amount-right h6 {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 3.125rem; /* 104.167% */
+}
+
+.amount-box .money-sec .amount-left .amount1 #hide-btn {
+    background: none;
+}
+
+.amount-box .money-sec .amount-left .amount1 #show-btn {
+    background: none;
+    display: none;
+}
+
+.amount-box .btn-and-accno {
+    display: flex;
+    width: 35.3125rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.amount-box .btn-and-accno .box-btn {
+    display: flex;
+    gap: 1rem;
+}
+
+.amount-box .btn-and-accno .box-btn a {
+    display: flex;
+    color: #FFF;
+    padding: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: 1px solid #FFF;
+}
+
+.amount-box .btn-and-accno .box-btn a:hover {
+    background-color: #FFF;
+    color: #000; 
+    border: none;
+}
+ 
+.amount-box .btn-and-accno .accno {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.amount-box .btn-and-accno .accno p {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.amount-box .btn-and-accno .accno .account-num {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.amount-box .btn-and-accno .accno .account-num p {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#dashboard .left-section .transaction-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    width: 35.3125rem;
+    border-radius: 1.25rem;
+    background: #FFF;
+    box-shadow: 0px 17px 20px 0px rgba(99, 122, 122, 0.05);
+}
+
+.left-section .transaction-box .trans-head {
+    display: flex;
+    width: 35.3125rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left-section .transaction-box .trans-head .trans-head-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.trans-head .trans-head-left h6 {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.trans-head .trans-head-left p {
+    color: var(--Grey, #6C757D);
+    font-family: Open Sans;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.trans-head a {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+} 
+
+.transaction-box .trans-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.transaction-box .trans-list .list-head {
+    display: flex;
+    justify-content: space-between;
+    width: 35.3125rem;
+}
+
+.transaction-box .trans-list .list-head p {
+    color: var(--Grey, #6C757D);
+    font-family: Open Sans;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.transaction-box .trans-list .list-head .name {
+    display: flex;
+    width: 10rem;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.transaction-box .trans-list .list-head .date, .status, .amount {
+    display: flex;
+    width: 7rem;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.transaction-box .trans-list .list-head .amount {
+    display: flex;
+    width: 7rem;
+    align-items: flex-end;
+    justify-content: right;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.transaction-box .trans-list .transaction {
+    display: flex;
+    justify-content: space-between;
+    width: 35.3125rem;
+}
+
+.trans-list .transaction .name {
+    display: flex;
+    width: 10rem;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.trans-list .transaction .date, .status {
+    display: flex;
+    width: 7rem;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.trans-list .transaction .amount {
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+    width: 7rem;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.trans-list .transaction .name h5 {
+    color: #000;
+    width: 10rem;
+    font-family: Open Sans;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.trans-list .transaction .name p {
+    color: var(--Grey, #6C757D);
+    width: 10rem;
+    font-family: Open Sans;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.trans-list .transaction .date h5 {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.trans-list .transaction .date p {
+    color: var(--Grey, #6C757D);
+    font-family: Open Sans;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.trans-list .transaction .status h5 {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.trans-list .transaction .status p {
+    color: var(--Grey, #6C757D);
+    font-family: Open Sans;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.trans-list .transaction .amount h5 {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.trans-list .transaction .amount p {
+    color: var(--Grey, #6C757D);
+    font-family: Open Sans;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#dashboard .right-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+#dashboard .right-section .credit-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2rem;
+    gap: 2rem;
+    width: 24.875rem;
+    border-radius: 1.25rem;
+    background: #FFF;
+    box-shadow: 0px 17px 20px 0px rgba(99, 122, 122, 0.05);
+}
+
+#dashboard .right-section .credit-card h5 {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.right-section .credit-card .all-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.credit-card .all-cards #card {
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 8.5rem;
+    height: 5.4375rem;
+    align-items: flex-start;
+    padding: 0.8rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    background: var(--Gradient, linear-gradient(180deg, #033 0%, #181D1D 60.08%));
+}
+
+.credit-card .all-cards #card .logo {
+    display: flex;
+    width: 8.5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.credit-card .all-cards #card .logo h6 {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 0.5rem;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.credit-card .all-cards #card .logo img {
+    width: 1.75rem;
+}
+
+.credit-card .all-cards #card .card-circuit {
+    display: flex;
+    width: 8.5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.credit-card .all-cards #card .card-circuit .card-bal {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 0.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.credit-card .all-cards #card .card-circuit  img {
+    width: 1.1875rem;
+}
+
+
+.all-cards #card .card-number {
+    display: flex;
+    width: 8.5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.all-cards #card .card-number p {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.all-cards #card .card-bottom {
+    display: flex;
+    width: 8.5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.all-cards #card .card-bottom .card-name {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 0.375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.all-cards #card .card-bottom .expiry-date {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    align-items: flex-end;
+    justify-content: right;
+}
+
+.all-cards #card .card-bottom .expiry-date .expiry {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 0.375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.all-cards #card .card-bottom .expiry-date .date {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 0.375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.credit-card .all-cards #add-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8.5rem;
+    height: 7.4375rem;
+    height: 5.4375rem;
+    padding: 0.8rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid var(--Grey, #6C757D);
+}
+
+
+
+#dashboard .right-section .request-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2rem;
+    gap: 2rem;
+    width: 24.875rem;
+    border-radius: 1.25rem;
+    background: #FFF;
+    box-shadow: 0px 17px 20px 0px rgba(99, 122, 122, 0.05);
+}
+
+#dashboard .right-section .request-box .request-head {
+    display: flex;
+    width: 24.875rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+#dashboard .right-section .request-box h6 {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#dashboard .right-section .request-box a {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+} 
+
+.right-section .request-box .all-requests {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-section .request-box .all-requests .request {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 24.875rem;
+    padding: 1.25rem 0rem;
+    border-top: 1px solid rgba(108, 117, 125, 0.30);
+}
+
+.request-box .all-requests .request img {
+    width: 3.6875rem;
+    height: 3.6875rem;
+    flex-shrink: 0;
+    border-radius: 3.6875rem;
+}
+
+.request-box .all-requests .request h5 {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.request-box .all-requests .request h5 p {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.request-box .all-requests .request .name-and-date {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.request-box .all-requests .request .amount {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: right;
+    align-items: flex-end;
+}
+
+
+
+
+
+#transfer-box3 #confirm-dialog3 {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    opacity: 50%;
+    width: 100vw;
+    height: 100vh;
+}
+
+#transfer-box3 {
+    z-index: 5;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#transfer-box3 .confirm-transfer {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: column;
+    gap: 2rem;
+    position: fixed;
+    padding: 2rem;
+    z-index: 3;
+    width: 28.6875rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: #FFF;
+}
+
+#transfer-box3 .confirm-transfer .top-sec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 28.6875rem;
+
+}
+
+#transfer-box3 .confirm-transfer .top-sec h5 {
+    color: var(--Bg-colour, #033);
+    font-family: Open Sans;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#transfer-box3 .confirm-transfer .trans-text {
+    width: 23.25rem;
+    color: #000;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#transfer-box3 .confirm-transfer .pin-box {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+}
+
+#transfer-box3 .confirm-transfer .pin-box .pin-sec {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+}
+
+#transfer-box3 .confirm-transfer .pin-box .pin-sec p {
+    width: 23.25rem;
+    color: #000;
+    text-align: left;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#transfer-box3 .confirm-transfer .pin-box .pin-sec input {
+    width: 24.375rem;
+    height: 1rem;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 0.625rem;
+    border: 1px solid var(--Grey, #6C757D);
+    padding: 2rem;
+}
+
+#transfer-box3 .confirm-transfer #cancel-btn {
+    background: none;
+    font-size: 1rem;
+}
+
+#transfer-box3 .confirm-transfer .confirm-btn {
+    display: flex;
+    color: #FFF;
+    font-size: 1rem;
+    width: 28.5625rem;
+    padding: 1.25rem 2.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    background: var(--Button-colour, #C30);
+}
+
+#transfer-box3 .confirm-transfer .confirm-btn:hover {
+    background-color: #000;
+}
+
+.confirm-transfer #error-text {
+    color: #C30;
+}

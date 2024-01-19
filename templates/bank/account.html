@@ -1,0 +1,286 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}My Account{% endblock page_title %}
+
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+<link rel="stylesheet" href="{% static "css/account.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+{% include "includes/error_alert.html" %}
+<section id="menu-options">
+    <a href="{% url "dashboard" %}"><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+    <ul class="menu-items">
+        <li><a class="current-item2" href="{% url "dashboard" %}"><i class="fa-solid fa-archway"></i>Dashboard</a></li>
+        <li><a class="current-item2" href="{% url "transfer1" %}"><i class="fa-regular fa-paper-plane"></i> Transfer</a></li>
+        <li><a class="current-item2" href="{% url "receive1" %}"><i class="fa-solid fa-money-bill-transfer"></i>Receive</a></li>
+        <li><a class="current-item2" href="{% url "transaction" %}"><i class="fa-solid fa-receipt"></i>Transactions</a></li>
+        <li><a class="current-item" href="{% url "account" %}"><i class="fa-regular fa-user"></i>Account</a></li>
+        <li><a class="current-item2" href=""><i class="fa-solid fa-headset"></i>Support</a></li>
+        <li><a class="current-item2" href="{% url "logout" %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
+
+</section>
+{% include "includes/nav.html" %}
+
+<section id="transfer1">
+    <div class="profile-box">
+        <div class="profile-top">
+                {% if account.account_image %}
+                    <img src="{{ account.account_image.url }}" alt="">
+                {% else %}
+                    <img src="{% static "images/blank-pic.jpg" %}" alt="">
+                {% endif %}
+            {% if kyc %}
+
+                <h5>{{ account.account_name }}</h5>
+                {% if kyc.kyc_status == "approved" %}
+                <p class="active">Active</p>
+                {% else %}
+                <p style="color:#C30;">Inactive</p>
+                {% endif %}
+
+            {% else %}
+                {% if account.account_name %}
+                <h5>{{ account.account_name }}</h5>
+                {% else %}
+                <h5>Your Name</h5>
+                {% endif %}
+                <p style="color:#C30;">{{ account.account_status|capfirst }}</p>
+
+            {% endif %}
+        </div>
+        <div class="account-details">
+            <div class="detail">
+                <p>Account No:</p>
+                <p><b>{{ account.account_number }}</b></p>
+            </div>
+            <div class="detail">
+                <p>Joined:</p>
+                <p><b>{{ account.date|date:"d M, Y" }}</b></p>
+            </div>
+            <div class="detail">
+                <p>Account Status:</p>
+                {% if kyc %}
+                <p><b>{{ kyc.kyc_status|capfirst }}</b></p>
+                {% else %}
+                <p><b>KYC Not Submitted</b></p>
+                {% endif %}
+            </div>
+        </div>
+
+        <a href="{% url "delete-account" %}" class="delete-account"><i class="fa-solid fa-trash-can"></i> Delete Account</a>
+
+    </div>
+
+
+    {% comment "" %}Account Section{% endcomment %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div id="trans-box1">
+        <div class="box1-head">
+            <p class="account-sec">Account</p>
+            <p id="security-sec">Security</p>
+        </div>
+        
+
+        <div class="profile-pic">
+            <div class="image-sec">
+                <div id="imagePreview">
+                    {% if account.account_image %}
+                    <img src="{{ account.account_image.url }}" alt="">
+                    {% else %}
+                    <img src="{% static "images/blank-pic.jpg" %}" alt="">
+                    {% endif %}
+                </div>
+                <h5>Your Profile Picture</h5>
+            </div>
+            <div class="upload-btn">
+                <p>Upload new photo</p>
+                <input id="new-photo" style="opacity:0%" onchange="previewImage()" type="file" name="new-photo" accept="image/*" >
+            </div>
+        </div>
+
+        <div class="user-details">
+            <div class="first-and-last-name">
+                <div class="name-box">
+                    <label for="first-name"><b>First Name</b></label>
+                    {% if kyc %}
+                    <input type="text" value="{{ kyc.first_name }}" disabled>
+                    {% else %}
+                    <input type="text" value="" disabled>
+                    {% endif %}
+                </div>
+                <div class="name-box">
+                    <label for="last-name"><b>Last Name</b></label>
+                    {% if kyc %}
+                    <input type="text" value="{{ kyc.last_name }}" disabled>
+                    {% else %}
+                    <input type="text" value="" disabled>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="first-and-last-name">
+                <div class="name-box">
+                    <label for="first-name"><b>Email Address</b></label>
+                    <input type="email" value="{{ user.email }}" disabled>
+                </div>
+                <div class="name-box">
+                    <label for="last-name"><b>Phone Number</b></label>
+                    {% if kyc %}
+                    <input type="tel" value="{{ kyc.phone_number }}" disabled>
+                    {% else %}
+                    <input type="tel" value="" disabled>
+                    {% endif %}
+                </div>
+            </div>
+            {% if kyc %}
+            <div class="first-and-last-name">
+                <div class="name-box">
+                    <label for="first-name"><b>ID Confirmation documents</b></label>
+                    <input type="text" value="Uploaded" disabled>
+                </div>
+                <div class="name-box">
+                    <label for="first-name" style="opacity: 0;"><b>ID Confirmation documents</b></label>
+                    {% if kyc.kyc_status == "approved" %}
+                    <h6 style="color: green;"><i class="fa-solid fa-check"></i> Person confirmed</h6>
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+            <div class="first-and-last-name">
+                <div class="name-box">
+                    <label for="first-name"><b>ID Confirmation documents</b></label>
+                    <input type="text" value="Not Uploaded" disabled>
+                </div>
+                <div class="name-box">
+                    <label for="first-name" style="opacity: 0;"><b>ID Confirmation documents</b></label>
+                    <h6><i class="fa-solid fa-warning"></i> Person not confirmed</h6>
+                </div>
+            </div>
+            {% endif %}
+            <div class="address">
+                <div class="name-box">
+                    <label for="address"><b>Address</b></label>
+                    {% if kyc %}
+                    <input type="text" value="{{ kyc.address }}" disabled>
+                    {% else %}
+                    <input type="text" value="" disabled>
+                    {% endif %}
+                </div>
+            </div>
+            <button class="save-changes">Save Changes</button>
+        </div>
+
+    </div>
+    </form>
+   
+
+    {% comment "" %}Security Section{% endcomment %}
+    <form action="" method="post">
+        {% csrf_token %}
+    <div id="trans-box2">
+        <div class="box1-head">
+            <p id="account-sec">Account</p>
+            <p id="security-sec">Security</p>
+        </div>
+
+        <div class="password-head">
+            <h6>Change Password</h6>
+            <p>You can always change your password for security reasons or reset your password in case you forgot it.</p>
+        </div>
+
+        <div class="address">
+            <div class="name-box">
+                    <label for="current-password"><b>Current Password</b></label>
+                    <input type="password" name="current-password" placeholder="Current Password" required>
+            </div>
+        </div>
+        <div class="address">
+            <div class="name-box">
+                    <label for="current-password"><b>New Password</b></label>
+                    <input type="password" name="new-password1" placeholder="New Password" required>
+            </div>
+        </div>
+        <div class="address">
+            <div class="name-box">
+                    <label for="confirm-password"><b>Confirm Password</b></label>
+                    <input type="password" name="new-password2" placeholder="Confirm Password" required>
+            </div>
+        </div>
+        <button class="save-changes">Save Changes</button>
+
+    </div>
+    </form>
+
+</section>
+
+
+
+
+
+
+
+
+<script>
+    function previewImage() {
+      var input = document.getElementById('new-photo');
+      var preview = document.getElementById('imagePreview');
+
+      while (preview.firstChild) {
+        preview.removeChild(preview.firstChild);
+      }
+
+      var file = input.files[0];
+
+      if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          var img = document.createElement('img');
+          img.src = e.target.result;
+          img.style.maxWidth = '100%';
+          img.style.maxHeight = '100%';
+          preview.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+
+
+<script>
+        var account_botton = document.getElementById("account-sec");
+        var security_botton = document.getElementById("security-sec");
+        var account_dialog = document.getElementById("trans-box1");
+        var security_dialog = document.getElementById("trans-box2");
+
+
+        // Add event listener to the checkbox
+        security_botton.addEventListener("click", function() {
+          // If the checkbox is checked, show the text area; otherwise, hide it
+          if (security_botton.click) {
+            account_dialog.style.display = "none";
+            security_dialog.style.display = "flex";
+          } 
+        });
+
+         // Add event listener to the checkbox
+        account_botton.addEventListener("click", function() {
+          // If the checkbox is checked, show the text area; otherwise, hide it
+          if (account_botton.click) {
+            account_dialog.style.display = "flex";
+            security_dialog.style.display = "none";
+          }
+        });
+
+    </script>
+
+
+{% endblock contents %}

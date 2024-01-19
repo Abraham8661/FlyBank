@@ -1,0 +1,420 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Banking Hall{% endblock page_title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+
+{% include "includes/error_alert.html" %}
+{% comment "" %}Card Full View Section{% endcomment %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+<div id="transfer-box">
+<div id="confirm-dialog"></div>
+    <div class="confirm-transfer">
+        <div class="top-sec">
+            <h5>Create New Card!</h5>
+            <button id="cancel-btn"><i class="fa-solid fa-xmark" style="color: #000000;"></i></button>
+        </div>
+        <select name="chosen-card" id="chosen-card">
+            <option value="master">Master Card</option>
+            <option value="visa">Visa Card</option>
+            <option value="verve">Verve Card</option>
+        </select>
+        <p>This card will cost you <b>N1,000</b>, please insert your security PIN below to continue:</p>
+        <input type="password" name="pin-code" max="4" min="4">
+        <button class="confirm-btn">Confirm</button>
+    </div>
+</div>
+</form>
+
+{% for card in all_cards %}
+<div id="transfer-box2">
+<div id="confirm-dialog"></div>
+    <div class="confirm-transfer">
+        <div class="top-sec">
+            <h5>Preview Card</h5>
+            <button id="cancel-btn2"><i class="fa-solid fa-xmark" style="color: #000000;"></i></button>
+        </div>
+
+        <div id="preview-card">
+            <div class="logo">
+                <h6>Credit Card</h6>
+                <img src="{% static "images/flybank-logo2.png" %}" alt="">
+            </div>
+            <div class="card-circuit">
+                <img src="{% static "images/card-circuit.png" %}" alt="">
+                <p class="card-bal">N{{ card.card_balance|floatformat:"2g"}}</p>
+                {% if card.card_type == "master" %}
+                <img src="{% static "images/mscard-logo.png" %}" alt="">
+                {% elif card.card_type == "visa" %}
+                <img src="{% static "images/visa-logo.png" %}" alt="">
+                {% endif %}
+            </div>
+            <div class="card-number">
+                <p>{{ card.card_number|slice:"0:4"}}</p>
+                <p>{{ card.card_number|slice:"5:9"}}</p>
+                <p>{{ card.card_number|slice:"10:14"}}</p>
+                <p>{{ card.card_number|slice:"15:19"}}</p>
+            </div>
+            <div class="card-bottom">
+                <p class="card-name">{{ card.card_name|upper}}</p>
+                <div class="expiry-date">
+                    <p class="expiry">CVV</p>
+                    <p class="date">{{ card.CVV }}</p>
+                </div>
+                <div class="expiry-date">
+                    <p class="expiry">Expiry date</p>
+                    <p class="date">{{ card.expiry_date|date:"m"}}/{{ card.expiry_date|date:"Y"|slice:"2:4"}}</p>
+                </div>
+                <div class="expiry-date">
+                    <p class="expiry">Issue date</p>
+                    <p class="date">{{ card.issue_date|date:"m"}}/{{ card.issue_date|date:"Y"|slice:"2:4"}}</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="both-card-btns">
+        <button type="button" id="fund-card" onclick="ShowFundForm()"><i class="fa-solid fa-add"></i> Fund Card</button>
+        <button type="button" id="del-card"><i class="fa-solid fa-trash-can"></i> Delete Card</button>
+        </div>
+
+        <form action="" id="fund-card-form" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="card-id" value="{{ card.card_code }}" style="display:"none";">
+            <p>How much do you want to add:</p>
+            <input type="number" name="amount-to-fund">
+            <p>Please insert your security PIN below to continue:</p>
+            <input type="password" name="fund-card-pin-code" max="4" min="4">
+            <button class="confirm-btn">Confirm</button>
+        </form>
+        
+        <form action="" id="delete-card-form" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="delete-card-id" value="{{ card.card_code }}" style="display:"none";">
+            <p>Please insert your security PIN below to delete card:</p>
+            <input type="password" name="delete-card-pin-code" max="4" min="4">
+            <button class="confirm-btn">Confirm</button>
+        </form>
+    </div>
+
+</div>
+{% endfor %}
+
+
+
+<section id="menu-options">
+    <a href=""><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+    <ul class="menu-items">
+        <li><a class="current-item" href=""><i class="fa-solid fa-archway" style="color: #ffffff;"></i>Dashboard</a></li>
+        <li><a class="current-item2" href="{% url "transfer1" %}"><i class="fa-regular fa-paper-plane"></i> Transfer</a></li>
+        <li><a class="current-item2" href="{% url "receive1" %}"><i class="fa-solid fa-money-bill-transfer"></i>Receive</a></li>
+        <li><a class="current-item2" href="{% url "transaction" %}"><i class="fa-solid fa-receipt"></i>Transactions</a></li>
+        <li><a class="current-item2" href="{% url "account" %}"><i class="fa-regular fa-user"></i>Account</a></li>
+        <li><a class="current-item2" href=""><i class="fa-solid fa-headset"></i>Support</a></li>
+        <li><a class="current-item2" href="{% url "logout" %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
+
+</section>
+{% include "includes/nav.html" %}
+
+<section id="dashboard">
+    <div class="left-section">
+        <div class="amount-box">
+            <div class="money-sec">
+                <div class="amount-left">
+                    <div class="amount1">
+                        <h5 id="account-balance">N{{ account.account_balance|floatformat:"2g" }}</h5>
+                        <button type="button" id="hide-btn"><i class="fa-regular fa-eye-slash" style="color: #ffffff;"></i></button>
+                        <button type="button" id="show-btn"><i class="fa-regular fa-eye" style="color: #ffffff;"></i></button>
+                    </div>
+                    {% if last_received %}
+                    <p>Last received: N{{ last_received.amount|floatformat:"2g" }}</p>
+                    {% else %}
+                    <p>Last received: N0.00</p>
+                    {% endif %}
+                </div>
+
+                <div class="amount-right">
+                    <p>Payouts: N{{ payouts|floatformat:"2g" }}</p>
+                </div>
+            </div>
+
+            <div class="btn-and-accno">
+                <div class="box-btn">
+                    <a href="{% url "transfer1" %}">Transfer cash</a>
+                    <a href="{% url "receive1" %}">Request payment</a>
+                </div>
+                <div class="accno">
+                    <p>Account Number</p>
+                    <div class="account-num">
+                        <p id="account-number">{{ account.account_number }}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="transaction-box">
+            <div class="trans-head">
+                <div class="trans-head-left">
+                    <h6>Transactions</h6>
+                    <p>Updated every minutes</p>
+                </div>
+                <a href="{% url "transaction" %}">View All <i class="fa-solid fa-chevron-right" style="color: #050505;"></i></a>
+            </div>
+
+            {% if transactions %}
+            <div class="trans-list">
+                <div class="list-head">
+                    <p class="name">Name/Business</p>
+                    <p class="date">Date</p>
+                    <p class="status">Status</p>
+                    <p class="amount">Amount</p>
+                </div>
+                {% for trans in transactions %}
+                <div class="transaction">
+                    <div class="name">
+                    {% if trans.sender_account == account %}
+                        <h5>{{ trans.receiver_account.account_name }}</h5>
+                        {% else %}
+                        <h5>{{ trans.sender_account.account_name }}</h5>
+                    {% endif %}
+                    </div>
+                    <div class="date">
+                        <h5>{{ trans.date|time:"g:i A" }}</h5>
+                        <p>{{ trans.date|date:"M dS, Y" }}</p>
+                    </div>
+                    <div class="status">
+                        <h5>{{ trans.status|capfirst }}</h5>
+                    </div>
+                    <div class="amount">
+                    {% if trans.sender_account == account %}
+                        <h5>-{{ trans.amount|floatformat:"0g" }}</h5>
+                        {% else %}
+                        <h5>+{{ trans.amount|floatformat:"0g" }}</h5>
+                    {% endif %}
+                    {% if trans.sender_account == account %}
+                        <p>-{{ trans.transaction_fee.fee|floatformat:"0g" }}</p>
+                        {% else %}
+                        <p></p>
+                    {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+            {% else %}
+            <p>There are currently no transactions</p>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <div class="right-section">
+        <div class="credit-card">
+            <h5>Linked Payment System</h5>
+            <div class="all-cards">
+                {% for card in all_cards %}
+                <div id="card">
+                    <div class="logo">
+                        <h6>Credit Card</h6>
+                        <img src="{% static "images/flybank-logo2.png" %}" alt="">
+                    </div>
+                    <div class="card-circuit">
+                        <img src="{% static "images/card-circuit.png" %}" alt="">
+                        <p class="card-bal">N{{ card.card_balance|floatformat:"2g"}}</p>
+                        {% if card.card_type == "master" %}
+                        <img src="{% static "images/mscard-logo.png" %}" alt="">
+                        {% elif card.card_type == "visa" %}
+                        <img src="{% static "images/visa-logo.png" %}" alt="">
+                        {% endif %}
+                    </div>
+                    
+                    <div class="card-number">
+                        <p>{{ card.card_number|slice:"0:4"}}</p>
+                        <p>{{ card.card_number|slice:"5:9"}}</p>
+                        <p>{{ card.card_number|slice:"10:14"}}</p>
+                        <p>{{ card.card_number|slice:"15:19"}}</p>
+                    </div>
+                    <div class="card-bottom">
+                        <p class="card-name">{{ card.card_name|upper}}</p>
+                        <div class="expiry-date">
+                            <p class="expiry">CVV</p>
+                            <p class="date">{{ card.CVV}}</p>
+                        </div>
+                        <div class="expiry-date">
+                            <p class="expiry">Expiry date</p>
+                            <p class="date">{{ card.expiry_date|date:"m"}}/{{ card.expiry_date|date:"Y"|slice:"2:4"}}</p>
+                        </div>
+                        <div class="expiry-date">
+                            <p class="expiry">Issue date</p>
+                            <p class="date">{{ card.issue_date|date:"m"}}/{{ card.issue_date|date:"Y"|slice:"2:4"}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div id="add-card">
+                    <i class="fa-solid fa-plus" style="color: #050505;"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="request-box">
+            <div class="request-head">
+                <h6>Payment Requests</h6>
+                <a href="{% url "request" %}">View All <i class="fa-solid fa-chevron-right" style="color: #050505;"></i></a>
+            </div>
+
+            {% if all_requests %}
+            <div class="all-requests">
+                {% for request in all_requests %}
+                <div class="request">
+                    {% if request.sender_account.account_image %}
+                        <img src="{{ request.sender_account.account_image.url }}" alt="">
+                        {% else %}
+                        <img src="{% static "images/blank-pic.jpg" %}" alt="">
+                    {% endif %}
+                    <div class="name-and-date">
+                        <h5>{{ request.sender_account.account_name }}</h5>
+                        <p>{{ request.date|time:"g:i A" }} - {{ request.date|date:"M dS" }}</p>
+                    </div>
+                    <div class="amount">
+                        <h5>N{{ request.amount|floatformat:"2g" }}</h5>
+                        <p>{{ request.status }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>There are currently no new requests</p>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+        var hide_btn = document.getElementById("hide-btn");
+        var show_btn = document.getElementById("show-btn");
+        var acc_balance = document.getElementById("account-balance");
+
+
+        hide_btn.addEventListener("click", function() {
+          if (hide_btn.click) {
+            acc_balance.innerHTML = "*** *** ***"
+            hide_btn.style.display = "none";
+            show_btn.style.display = "flex";
+          } 
+        });
+
+        show_btn.addEventListener("click", function() {
+          if (hide_btn.click) {
+            acc_balance.innerHTML = "N{{ account.account_balance|floatformat:"2g" }}"
+            hide_btn.style.display = "flex";
+            show_btn.style.display = "none";
+          } 
+        });
+
+    </script>
+
+<script>
+        var complete_botton = document.getElementById("add-card");
+        var transfer_dialog = document.getElementById("transfer-box");
+        var cancel_btn = document.getElementById("cancel-btn");
+
+        var complete_botton2 = document.getElementById("card");
+        var transfer_dialog2 = document.getElementById("transfer-box2");
+        var cancel_btn2 = document.getElementById("cancel-btn2");
+
+         // Add event listener to the checkbox
+        complete_botton.addEventListener("click", function() {
+          // If the checkbox is checked, show the text area; otherwise, hide it
+          if (complete_botton.click) {
+            transfer_dialog.style.display = "flex";
+          } else {
+            transfer_dialog.style.display = "none";
+          }
+        });
+       
+        cancel_btn.addEventListener("click", function() {
+          // If the checkbox is checked, show the text area; otherwise, hide it
+          if (cancel_btn.click) {
+            transfer_dialog.style.display = "none";
+          } else {
+            transfer_dialog.style.display = "none";
+          }
+        });
+
+        
+         // Add event listener to the checkbox
+        complete_botton2.addEventListener("click", function() {
+          // If the checkbox is checked, show the text area; otherwise, hide it
+          if (complete_botton2.click) {
+            transfer_dialog2.style.display = "flex";
+          } else {
+            transfer_dialog2.style.display = "none";
+          }
+        });
+       
+        cancel_btn2.addEventListener("click", function() {
+          // If the checkbox is checked, show the text area; otherwise, hide it
+          if (cancel_btn2.click) {
+            transfer_dialog2.style.display = "none";
+          } else {
+            transfer_dialog2.style.display = "none";
+          }
+        });
+
+</script>
+
+
+<script>
+        var delete_botton = document.getElementById("del-card");
+        var fund_button = document.getElementById("fund-card");
+        var all_buttons = document.getElementById("both-card-btns");
+        var delete_form = document.getElementById("delete-card-form");
+
+         // Add event listener to the checkbox
+        delete_botton.addEventListener("click", function() {
+          // If the checkbox is checked, show the text area; otherwise, hide it
+          if (delete_botton.click) {
+            delete_form.style.display = "flex";
+            all_buttons.style.display = "none";
+          } else {
+            delete_form.style.display = "none";
+            all_buttons.style.display = "flex";
+          }
+        });
+       
+</script>
+
+<script>
+    function ShowFundForm(){
+        var delete_botton = document.getElementById("del-card");
+        var fund_button = document.getElementById("fund-card");
+        var all_buttons = document.getElementById("both-card-btns");
+        var fund_card_form = document.getElementById("fund-card-form");
+
+        fund_card_form.style.display = "flex";
+        all_buttons.style.display = "none";
+    }
+       
+</script>
+
+{% endblock contents %}

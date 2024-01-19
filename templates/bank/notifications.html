@@ -1,0 +1,70 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Notifications{% endblock page_title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+<link rel="stylesheet" href="{% static "css/notification.css" %}">
+
+{% endblock css_files %}
+
+
+{% block contents %}
+
+<section id="menu-options">
+    <a href=""><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+    <ul class="menu-items">
+        <li><a class="current-item2" href="{% url "dashboard" %}"><i class="fa-solid fa-archway"></i>Dashboard</a></li>
+        <li><a class="current-item2" href="{% url "transfer1" %}"><i class="fa-regular fa-paper-plane"></i> Transfer</a></li>
+        <li><a class="current-item2" href="{% url "receive1" %}"><i class="fa-solid fa-money-bill-transfer"></i>Receive</a></li>
+        <li><a class="current-item2" href="{% url "transaction" %}"><i class="fa-solid fa-receipt"></i>Transactions</a></li>
+        <li><a class="current-item2" href="{% url "account" %}"><i class="fa-regular fa-user"></i>Account</a></li>
+        <li><a class="current-item2" href=""><i class="fa-solid fa-headset"></i>Support</a></li>
+        <li><a class="current-item2" href="{% url "logout" %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
+
+</section>
+{% include "includes/nav.html" %}
+
+<section id="transaction1">
+    <div class="trans-head">
+        <h4>Notifications</h4>
+
+    </div>
+    <div class="trans-box1">
+        <div class="box-head">
+            <ul class="all-links">
+                <li><a href="" class="current-link">All</a></li>
+                <li><a href="">Cash Transfer</a></li>
+                <li><a href="">Cash Received </a></li>
+                <li><a href="">Payment Received </a></li>
+            </ul>
+
+        </div>
+
+        <div class="list-sec">
+            {% for info in notifications %}
+            <div class="trans-details">
+                <div class="name">
+                    <p>{{ info.transaction.date|date:"M dS, Y"}}</p>
+                </div>
+                <div class="des">
+                    <p>{{ info.message }}</b></p>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+
+        <div class="page-buttons">
+            <div><p class="current-page">1</p></div>
+            <div><p class="page">2</p></div>
+            <div><p class="page">3</p></div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock contents %}

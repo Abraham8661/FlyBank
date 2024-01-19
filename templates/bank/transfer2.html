@@ -1,0 +1,108 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Transfer Money{% endblock page_title %}
+
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+<link rel="stylesheet" href="{% static "css/transfer2.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+{% include "includes/error_alert.html" %}
+
+<section id="menu-options">
+    <a href=""><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+    <ul class="menu-items">
+        <li><a class="current-item2" href="{% url "dashboard" %}"><i class="fa-solid fa-archway"></i>Dashboard</a></li>
+        <li><a class="current-item" href="{% url "transfer1" %}"><i class="fa-regular fa-paper-plane"></i> Transfer</a></li>
+        <li><a class="current-item2" href="{% url "receive1" %}"><i class="fa-solid fa-money-bill-transfer"></i>Receive</a></li>
+        <li><a class="current-item2" href="{% url "transaction" %}"><i class="fa-solid fa-receipt"></i>Transactions</a></li>
+        <li><a class="current-item2" href="{% url "account" %}"><i class="fa-regular fa-user"></i>Account</a></li>
+        <li><a class="current-item2" href=""><i class="fa-solid fa-headset"></i>Support</a></li>
+        <li><a class="current-item2" href="{% url "logout" %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
+
+</section>
+{% include "includes/nav.html" %}
+
+<section id="transfer2">
+    <div class="trans-box2">
+        <div class="trans-head">
+            <h4>Make a Transfer</h4>
+        </div>
+        <p class="step-display">Step 2 of 3</p>
+        <h5 class="set-amount">Set Amount to Transfer</h5>
+
+        <div class="search-item">
+            <div class="image-and-text">
+                    {% if user_account.account_image %}
+                        <img src="{{ user_account.account_image.url }}" alt="">
+                        {% else %}
+                        <img src="{% static "images/blank-pic.jpg" %}" alt="">
+                    {% endif %}
+                <div class="recent-text">
+                    <h6>{{ recipient_account.account_name }}</h6>
+                    <p>{{ recipient_account.account_number }}</p>
+                </div>
+            </div>
+            <a href="{% url "transfer1" %}" class="choose-btn">Edit</a>
+        </div>
+
+        <form action="" class="transfer-form" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="recipient_account_number" value="{{ recipient_account.account_number }}">
+            <div class="amount-details">
+                <div class="amount-item">
+                    <label for="amount">How much do you want to transfer?</label>
+                    <input type="number" onkeyup="CalculateBalance()" id="input-amount" name="amount" placeholder="100.00 - 5,000,000.00" min="100.00" max="5000000" required>
+                    <p id="new_balance">Available Balance: <b>N{{ user_account.account_balance|floatformat:"2g" }}</b></p>
+                </div>
+                <div class="amount-item">
+                    <label for="description">Description</label>
+                    <input type="text" name="description" placeholder="Enter description here" required>
+                </div>
+            </div>
+
+        <div class="fees">
+            <p><b>Total Fees</b></p>
+            <p id="trans_fee">N{{ trans_fee.fee|floatformat:"2g" }}</p>
+        </div>
+
+        <div class="total-to-pay">
+            <h6>Total to Pay</h6>
+            <h6 id="total-amount">0 NGN</h6>
+        </div>
+
+        <div class="transfer-btn">
+            <a href="{% url "transfer1" %}" class="previous-btn">Previous</a>
+            <button type="submit" class="next-btn">Next</button>
+        </div>
+        </form>
+
+    </div>
+
+</section>
+
+<script>
+    function CalculateBalance() {
+        var amount_input = document.getElementById("input-amount");
+        var current_account_bal = "{{ user_account.account_balance }}"
+        var new_balance = document.getElementById("new_balance");
+        var trans_fees = "{{ trans_fee.fee }}"
+        var total_balance = document.getElementById("total-amount");
+        var new_bal = current_account_bal - amount_input.value
+        new_balance.innerHTML = "New Balance: " + new_bal;
+        var new_total = parseInt(amount_input.value) + parseInt(trans_fees)
+        total_balance.innerHTML = new_total + " " + "NGN";
+        if (amount_input.value == 0) {
+            total_balance.innerHTML = 0 
+        }   
+        
+    }
+</script>
+
+{% endblock contents %}

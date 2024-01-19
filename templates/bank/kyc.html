@@ -1,0 +1,297 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Account Verification{% endblock page_title %}
+
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+<link rel="stylesheet" href="{% static "css/kyc.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+{% include "includes/error_alert.html" %}
+
+<section id="menu-options">
+    <a href=""><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+    <ul class="menu-items">
+        <li><a class="current-item2" href="{% url "dashboard" %}"><i class="fa-solid fa-archway"></i>Dashboard</a></li>
+        <li><a class="current-item2" href="{% url "transfer1" %}"><i class="fa-regular fa-paper-plane"></i> Transfer</a></li>
+        <li><a class="current-item2" href="{% url "receive1" %}"><i class="fa-solid fa-money-bill-transfer"></i>Receive</a></li>
+        <li><a class="current-item2" href="{% url "transaction" %}"><i class="fa-solid fa-receipt"></i>Transactions</a></li>
+        <li><a class="current-item2" href="{% url "account" %}"><i class="fa-regular fa-user"></i>Account</a></li>
+        <li><a class="current-item2" href=""><i class="fa-solid fa-headset"></i>Support</a></li>
+        <li><a class="current-item2" href="{% url "logout" %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
+
+</section>
+{% include "includes/nav.html" %}
+
+<section id="transfer1">
+    <div class="profile-box">
+        <div class="profile-top">
+            <img src="{% static "images/blank-pic.jpg" %}" alt="">
+            <h5>Your Name</h5>
+            <p class="active">{{ account.account_status|capfirst }}</p>
+        </div>
+        <div class="account-details">
+            <div class="detail">
+                <p>Account No:</p>
+                <p><b>{{ account.account_number }}</b></p>
+            </div>
+            <div class="detail">
+                <p>Joined:</p>
+                <p><b>{{ account.date|date:"d M, Y"}}</b></p>
+            </div>
+        </div>
+
+        <a href="" class="delete-account"><i class="fa-solid fa-trash-can"></i> Delete Account</a>
+
+    </div>
+
+
+    {% comment "" %}Account Section{% endcomment %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div id="trans-box1">
+        <div class="box1-head">
+            <p class="account-sec">KYC Registration Form</p>
+        </div>
+
+        <div class="user-details">
+            <div class="first-and-last-name">
+                <div class="name-box">
+                    <label for="first-name"><b>First Name</b></label>
+                    <input type="text" placeholder="Your first name" name="first_name" required>
+                </div>
+                <div class="name-box">
+                    <label for="last-name"><b>Last Name</b></label>
+                    <input type="text" placeholder="Your last name" name="last_name" required>
+                </div>
+            </div>
+            <div class="first-and-last-name">
+                <div class="name-box">
+                    <label for="email"><b>Email Address</b></label>
+                    <input type="email" placeholder="Your email address" value="{{ user.email }}" name="email_address" disabled>
+                </div>
+                <div class="name-box">
+                    <label for="phone-number"><b>Phone Number</b></label>
+                    <input type="tel" placeholder="Your phone number" name="phone_number" required>
+                </div>
+            </div>
+            <div class="first-and-last-name">
+                <div class="name-box">
+                    <label for="your-country"><b>Country</b></label>
+                    <input type="text" placeholder="Your country" name="country" required>
+                </div>
+                <div class="name-box">
+                    <label for="last-name"><b>Your State</b></label>
+                    <input type="text" placeholder="Your state" name="state" required>
+                </div>
+            </div>
+            <div class="address">
+                <div class="name-box">
+                    <label for="address"><b>Address</b> (It should match with your uploaded identity document)</label>
+                    <input type="text" placeholder="Your address" name="address" required>
+                </div>
+            </div>
+            <div class="birth-section">
+                <div class="name-box">
+                    <label for="address"><b>Date of Birth</b></label>
+                    <input type="date" name="date_of_birth" required>
+                </div>
+                <div class="name-box">
+                    <label for="address"><b>Gender</b></label>
+                    <select name="gender" id="" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="name-box">
+                    <label for="address"><b>Identity Document</b></label>
+                    <select name="identity_doc" id="" required>
+                        <option value="voters_card">Voters Card</option>
+                        <option value="national_identity_card">National Identity Card</option>
+                        <option value="international_passport">International Passport</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="id-card-sec">
+                <label for="id-card"><b>Upload your ID card selected</b>(JPEG, JPG or PNG only)</label>
+                <div class="both-sides">
+                    <div class="card-sec">
+                        <div id="id-card">
+
+                        </div>
+                        <i id="add-btn" class="fa-solid fa-add"></i>
+                        <input id="FrontCard" onchange="previewFrontCard()" type="file" name="front_card" accept="image/*" required>
+                        <p>(Front)</p>
+                    </div>
+                    <div class="card-sec">
+                        <div id="id-card-back">
+
+                        </div>
+                        <i id="add-btn" class="fa-solid fa-add"></i>
+                        <input id="BackCard" onchange="previewBackCard()" type="file" name="back_card" accept="image/*" required>
+                        <p>(Back)</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="sign-sec">
+                <div class="both-sides">
+                    <div class="card-sec">
+                        <label for="id-card"><b>Your Signature</b>(JPEG, JPG or PNG only)</label>
+                        <div id="sign-card">
+
+                        </div>
+                        <i id="add-btn" class="fa-solid fa-add"></i>
+                        <input id="SignCard" onchange="previewSignCard()" type="file" name="signature" accept="image/*" required>
+
+                    </div>
+                    <div class="card-sec">
+                        <label for="id-card"><b>Your Passport </b>(JPEG, JPG or PNG only)</label>
+                        <div id="pass-card">
+
+                        </div>
+                        <i id="add-btn" class="fa-solid fa-add"></i>
+                        <input id="PassCard" onchange="previewPassCard()" type="file" name="passport" accept="image/*" required>
+
+                    </div>
+                    
+
+                </div>
+
+            </div>
+
+            <button class="save-changes">Submit your KYC</button>
+        </div>
+
+    </div>
+
+    </form>
+
+</section>
+
+
+
+
+
+
+
+
+<script>
+    function previewFrontCard() {
+      var input = document.getElementById('FrontCard');
+      var preview = document.getElementById('id-card');
+
+      while (preview.firstChild) {
+        preview.removeChild(preview.firstChild);
+      }
+
+      var file = input.files[0];
+
+      if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          var img = document.createElement('img');
+          img.src = e.target.result;
+          img.style.maxWidth = '100%';
+          img.style.maxHeight = '100%';
+          preview.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    }
+
+
+    function previewBackCard() {
+      var input = document.getElementById('BackCard');
+      var preview = document.getElementById('id-card-back');
+
+      while (preview.firstChild) {
+        preview.removeChild(preview.firstChild);
+      }
+
+      var file = input.files[0];
+
+      if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          var img = document.createElement('img');
+          img.src = e.target.result;
+          img.style.maxWidth = '100%';
+          img.style.maxHeight = '100%';
+          preview.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    }
+
+
+    function previewSignCard() {
+      var input = document.getElementById('SignCard');
+      var preview = document.getElementById('sign-card');
+
+      while (preview.firstChild) {
+        preview.removeChild(preview.firstChild);
+      }
+
+      var file = input.files[0];
+
+      if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          var img = document.createElement('img');
+          img.src = e.target.result;
+          img.style.maxWidth = '100%';
+          img.style.maxHeight = '100%';
+          preview.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    }
+
+
+    function previewPassCard() {
+      var input = document.getElementById('PassCard');
+      var preview = document.getElementById('pass-card');
+
+      while (preview.firstChild) {
+        preview.removeChild(preview.firstChild);
+      }
+
+      var file = input.files[0];
+
+      if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          var img = document.createElement('img');
+          img.src = e.target.result;
+          img.style.maxWidth = '100%';
+          img.style.maxHeight = '100%';
+          preview.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+
+
+
+
+{% endblock contents %}

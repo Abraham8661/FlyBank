@@ -1,0 +1,148 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Confirm Your Transfer{% endblock page_title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+<link rel="stylesheet" href="{% static "css/transfer3.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+{% include "includes/error_alert.html" %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+<div id="transfer-box">
+<div id="confirm-dialog"></div>
+    <div class="confirm-transfer">
+        <div class="top-sec">
+            <h5>Confirm Transfer!</h5>
+            <button id="cancel-btn"><i class="fa-solid fa-xmark" style="color: #000000;"></i></button>
+        </div>
+        <p>To verify your transaction, please insert your security PIN below:</p>
+        <input type="password" name="pin-code" max="4" min="4">
+        <button class="confirm-btn">Confirm</button>
+    </div>
+
+</div>
+</form>
+
+<section id="menu-options">
+    <a href=""><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+    <ul class="menu-items">
+        <li><a class="current-item2" href="{% url "dashboard" %}"><i class="fa-solid fa-archway"></i>Dashboard</a></li>
+        <li><a class="current-item" href="{% url "transfer1" %}"><i class="fa-regular fa-paper-plane"></i> Transfer</a></li>
+        <li><a class="current-item2" href="{% url "receive1" %}"><i class="fa-solid fa-money-bill-transfer"></i>Receive</a></li>
+        <li><a class="current-item2" href="{% url "transaction" %}"><i class="fa-solid fa-receipt"></i>Transactions</a></li>
+        <li><a class="current-item2" href="{% url "account" %}"><i class="fa-regular fa-user"></i>Account</a></li>
+        <li><a class="current-item2" href=""><i class="fa-solid fa-headset"></i>Support</a></li>
+        <li><a class="current-item2" href="{% url "logout" %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
+
+</section>
+{% include "includes/nav.html" %}
+
+<section id="transfer3">
+    <div class="trans-box3">
+        <div class="trans-head">
+            <h4>Make a Transfer</h4>
+        </div>
+        <p class="step-display">Step 3 of 3</p>
+        <h5 class="set-amount">Confirm Your Transfer</h5>
+
+        <div class="search-item">
+            <div class="image-and-text">
+                    {% if user_account.account_image %}
+                        <img src="{{ user_account.account_image.url }}" alt="">
+                        {% else %}
+                        <img src="{% static "images/blank-pic.jpg" %}" alt="">
+                    {% endif %}
+                <div class="recent-text">
+                    <h6>{{ recipient_account.account_name }}</h6>
+                    <p>{{ recipient_account.account_number }}</p>
+                </div>
+            </div>
+            <a href="{% url "transfer1" %}" class="choose-btn">Edit</a>
+        </div>
+
+        <div class="payment-details">
+            <div class="top-text">
+                <h5>Payment Details</h5>
+                <a href="{% url "transfer2" recipient_account.account_number %}" class="choose-btn">Edit</a>
+            </div>
+
+            <div class="trans-details">
+                <div class="one-detail">
+                    <p>Amount to Transfer</p>
+                    <h6>{{ transaction.amount|floatformat:"2g" }} NGN</h6>
+                </div>
+                <div class="one-detail">
+                    <p>Recipient gets</p>
+                    <h6>{{ transaction.amount|floatformat:"2g" }} NGN</h6>
+                </div>
+                <div class="one-detail">
+                    <p>Account number of recipient</p>
+                    <h6>{{ transaction.receiver_account.account_number }}</h6>
+                </div>
+                <div class="one-detail">
+                    <p>Fee</p>
+                    <h6>N{{ transaction.transaction_fee.fee|floatformat:"2g" }}</h6>
+                </div>
+                <div class="one-detail">
+                    <p>Description</p>
+                    <h6>{{ transaction.description }}</h6>
+                </div>
+                <div class="one-detail">
+                    <p>Date initiated</p>
+                    <h6>{{ transaction.date|date:"M dS"}} at {{ transaction.date|time:"g:i A"}}</h6>
+                </div>
+            </div>
+
+            <div class="bottom-sec">
+                <div class="confirm-tickbox">
+                    <input type="checkbox" required>
+                    <p>I confirm the payment details above</p>
+                </div>
+
+                <div class="transfer-btn">
+                    <a href="{% url "transfer2" recipient_account.account_number %}" class="previous-btn">Previous</a>
+                    <button id="complete-btn">Complete transfer</button>
+                </div>
+            </div>
+
+        </div>
+</section>
+
+
+<script>
+        var complete_botton = document.getElementById("complete-btn");
+        var transfer_dialog = document.getElementById("transfer-box");
+        var cancel_btn = document.getElementById("cancel-btn");
+
+         // Add event listener to the checkbox
+        complete_botton.addEventListener("click", function() {
+          // If the checkbox is checked, show the text area; otherwise, hide it
+          if (complete_botton.click) {
+            transfer_dialog.style.display = "flex";
+          } else {
+            transfer_dialog.style.display = "none";
+          }
+        });
+       
+        cancel_btn.addEventListener("click", function() {
+          // If the checkbox is checked, show the text area; otherwise, hide it
+          if (cancel_btn.click) {
+            transfer_dialog.style.display = "none";
+          } else {
+            transfer_dialog.style.display = "none";
+          }
+        });
+
+    </script>
+
+
+
+{% endblock contents %}

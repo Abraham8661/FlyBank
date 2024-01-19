@@ -1,0 +1,228 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Transactions{% endblock page_title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+<link rel="stylesheet" href="{% static "css/transaction.css" %}">
+
+{% endblock css_files %}
+
+
+{% block contents %}
+{% include "includes/error_alert.html" %}
+
+<section id="menu-options">
+    <a href=""><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+    <ul class="menu-items">
+        <li><a class="current-item2" href="{% url "dashboard" %}"><i class="fa-solid fa-archway"></i>Dashboard</a></li>
+        <li><a class="current-item2" href="{% url "transfer1" %}"><i class="fa-regular fa-paper-plane"></i> Transfer</a></li>
+        <li><a class="current-item2" href="{% url "receive1" %}"><i class="fa-solid fa-money-bill-transfer"></i>Receive</a></li>
+        <li><a class="current-item" href="{% url "transaction" %}"><i class="fa-solid fa-receipt"></i>Transactions</a></li>
+        <li><a class="current-item2" href="{% url "account" %}"><i class="fa-regular fa-user"></i>Account</a></li>
+        <li><a class="current-item2" href=""><i class="fa-solid fa-headset"></i>Support</a></li>
+        <li><a class="current-item2" href="{% url "logout" %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
+
+</section>
+{% include "includes/nav.html" %}
+
+<section id="transaction1">
+    <div class="trans-head">
+        <h4>Transactions</h4>
+        <form action="" method="get">
+            {% csrf_token %}
+        <div>
+            <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+            <input type="text" name="trans-search" placeholder="Search by name, transaction number or description" value="{{ search_query }}">
+        </div>
+        </form>
+        <a href="{% url "bank-statement" %}" class="month-statement"><i class="fa-solid fa-print"></i> Get Bank Statement</a>
+    </div>
+    <div class="trans-box1">
+        <div class="box-head">
+            <ul class="all-links">
+                <li><a href="" class="current-link">All</a></li>
+                <li><a href="">Cash transfer</a></li>
+                <li><a href="">Cash Received</a></li>
+                <li><a href="">Paid requests</a></li>
+                <li><a href="">Payment received</a></li>
+            </ul>
+
+            <div class="print-icons">
+                <p><i class="fa-solid fa-print"></i> <a href="">Excel</a></p>
+                <p><i class="fa-solid fa-print"></i> <a href="">PDF</a></p>
+            </div>
+        </div>
+
+        {% if search_result %}
+        <div class="filter-options">
+        <p>Search Results for <b>{{ search_query }}</b></p>
+        <a href="{% url "transaction" %}" class="clear">Clear Filters</a>
+        </div>
+
+        <div class="list-sec">
+            <ul class="list-head">
+                <li class="name">Name/Business</li>
+                <li class="des">Description</li>
+                <li class="trans">Transaction No</li>
+                <li class="date">Date</li>
+                <li class="status">Status</li>
+                <li class="status">Transaction Type</li>
+                <li class="amount">Amount</li>
+            </ul>
+
+            {% for trans in search_result %}
+            <div class="trans-details">
+            <div class="list-head">
+                <div class="name">
+                    {% if trans.sender_account == account %}
+                        <p><b>{{ trans.receiver_account.account_name }}</b></p>
+                    {% else %}
+                        <p><b>{{ trans.sender_account.account_name }}</b></p>
+                    {% endif %}
+                </div>
+                <div class="des">
+                    <p><b>{{ trans.description }}</b></p>
+                </div>
+                <div class="trans">
+                    <p><b>{{ trans.transaction_id }}</b></p>
+                </div>
+                <div class="date">
+                    <p><b>{{ trans.date|time:"g:i A" }}</b></p>
+                    <p>{{ trans.date|date:"M dS, Y" }}</p>
+                </div>
+                <div class="status">
+                    <p><b>{{ trans.status|capfirst}}</b></p>
+                </div>
+                <div class="status">
+                    {% if trans.sender_account == account and trans.tranaction_type == "cash_transfer" %}
+                    <p><b>Cash Transfer</b></p>
+                    {% elif trans.receiver_account == account and trans.tranaction_type == "cash_transfer" %}
+                    <p><b>Cash Received</b></p>
+                    {% elif trans.sender_account == account and trans.tranaction_type == "paid_request"  %}
+                    <p><b>Paid Request</b></p>
+                    {% elif trans.receiver_account == account and trans.tranaction_type == "paid_request"  %}
+                    <p><b>Payment Received</b></p>
+                    {% endif %}
+                </div>
+                <div class="amount">
+                    {% if trans.sender_account == account %}
+                        <p><b>-{{ trans.amount|floatformat:"0g" }}</b></p>
+                        {% else %}
+                        <p><b>+{{ trans.amount|floatformat:"0g" }}</b></p>
+                    {% endif %}
+                    {% if trans.sender_account == account %}
+                        <p>-{{ trans.transaction_fee.fee|floatformat:"0g" }}</p>
+                        {% else %}
+                        <p></p>
+                    {% endif %}
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% else %}
+
+        <form action="" method="get">
+            {% csrf_token %}
+        <div class="filter-options">
+            <p>Date from</p>
+            <input type="date" name="date-from">
+            <p>Date to</p>
+            <input type="date" name="date-to">
+            <button>Search</button>
+        </div>
+        </form>
+
+        {% if transactions %}
+        <div class="list-sec">
+            <ul class="list-head">
+                <li class="name">Name/Business</li>
+                <li class="des">Description</li>
+                <li class="trans">Transaction No</li>
+                <li class="date">Date</li>
+                <li class="status">Status</li>
+                <li class="status">Transaction Type</li>
+                <li class="amount">Amount</li>
+            </ul>
+
+            {% for trans in transactions %}
+            <div class="trans-details">
+            <div class="list-head">
+                    <div class="name">
+                        {% if trans.sender_account == account %}
+                            <p><b>{{ trans.receiver_account.account_name }}</b></p>
+                        {% else %}
+                            <p><b>{{ trans.sender_account.account_name }}</b></p>
+                        {% endif %}
+                    </div>
+                <div class="des">
+                    <p><b>{{ trans.description }}</b></p>
+                </div>
+                <div class="trans">
+                    <p><b>{{ trans.transaction_id }}</b></p>
+                </div>
+                <div class="date">
+                    <p><b>{{ trans.date|time:"g:i A" }}</b></p>
+                    <p>{{ trans.date|date:"M dS, Y" }}</p>
+                </div>
+                <div class="status">
+                    <p><b>{{ trans.status|capfirst}}</b></p>
+                </div>
+                <div class="status">
+                    {% if trans.sender_account == account and trans.tranaction_type == "cash_transfer" %}
+                    <p><b>Cash Transfer</b></p>
+                    {% elif trans.receiver_account == account and trans.tranaction_type == "cash_transfer" %}
+                    <p><b>Cash Received</b></p>
+                    {% elif trans.sender_account == account and trans.tranaction_type == "paid_request"  %}
+                    <p><b>Paid Request</b></p>
+                    {% elif trans.receiver_account == account and trans.tranaction_type == "paid_request"  %}
+                    <p><b>Payment Received</b></p>
+                    {% elif trans.sender_account == account and trans.tranaction_type == "card_purchase"  %}
+                    <p><b>Card Purchase</b></p>
+                    {% elif trans.sender_account == account and trans.tranaction_type == "card_funding"  %}
+                    <p><b>Card Funding</b></p>
+                    {% elif trans.sender_account == account and trans.tranaction_type == "card_withdrawal"  %}
+                    <p><b>Card Withdrawal</b></p>
+                    {% endif %}
+                </div>
+                <div class="amount">
+                    {% if trans.sender_account == account %}
+                        <p><b>-{{ trans.amount|floatformat:"0g" }}</b></p>
+                        {% else %}
+                        <p><b>+{{ trans.amount|floatformat:"0g" }}</b></p>
+                    {% endif %}
+                    {% if trans.sender_account == account %}
+                        <p>-{{ trans.transaction_fee.fee|floatformat:"0g" }}</p>
+                        {% else %}
+                        <p></p>
+                    {% endif %}
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>You have no transactions yet. Make a transaction today!</p>
+        {% endif %}
+        {% endif %}
+
+        {% comment "" %}
+        <div class="page-buttons">
+            <div><p class="current-page">1</p></div>
+            <div><p class="page">2</p></div>
+            <div><p class="page">3</p></div>
+        </div>
+        {% endcomment %}
+
+        {% include "includes/paginator.html" with search_model=transactions custom_range=custom_range %}
+
+
+    </div>
+</section>
+
+{% endblock contents %}

@@ -1,0 +1,32 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+
+{% if messages %}
+    {% for message in messages %}
+    <div id="alert-box2">
+        <p><b>{{ message }}</b></p>
+        <button id="cancel-btn" onclick="ShowAlert()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    {% endfor %}
+{% endif %}
+
+<script>
+    function ShowAlert(){
+        var cancel_btn = document.getElementById("cancel-btn")
+        var alert_box = document.getElementById("alert-box2")
+
+        alert_box.style.display = "none";
+
+    }
+
+
+</script>
+
+{% endblock contents %}

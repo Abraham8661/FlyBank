@@ -1,0 +1,82 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Receive Money{% endblock page_title %}
+
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+<link rel="stylesheet" href="{% static "css/transfer2.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+<section id="menu-options">
+    <a href=""><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+    <ul class="menu-items">
+        <li><a class="current-item2" href="{% url "dashboard" %}"><i class="fa-solid fa-archway"></i>Dashboard</a></li>
+        <li><a class="current-item2" href="{% url "transfer1" %}"><i class="fa-regular fa-paper-plane"></i> Transfer</a></li>
+        <li><a class="current-item" href="{% url "receive1" %}"><i class="fa-solid fa-money-bill-transfer"></i>Receive</a></li>
+        <li><a class="current-item2" href="{% url "transaction" %}"><i class="fa-solid fa-receipt"></i>Transactions</a></li>
+        <li><a class="current-item2" href="{% url "account" %}"><i class="fa-regular fa-user"></i>Account</a></li>
+        <li><a class="current-item2" href=""><i class="fa-solid fa-headset"></i>Support</a></li>
+        <li><a class="current-item2" href="{% url "logout" %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
+
+</section>
+{% include "includes/nav.html" %}
+
+<section id="transfer2">
+    <div class="trans-box2">
+        <div class="trans-head">
+            <h4>Request a Payment</h4>
+        </div>
+        <p class="step-display">Step 2 of 3</p>
+        <h5 class="set-amount">Payment Details</h5>
+
+        <div class="search-item">
+            <div class="image-and-text">
+                    {% if user_account.account_image %}
+                        <img src="{{ user_account.account_image.url }}" alt="">
+                        {% else %}
+                        <img src="{% static "images/blank-pic.jpg" %}" alt="">
+                    {% endif %}
+                <div class="recent-text">
+                    <h6>{{ recipient_account.account_name }}</h6>
+                    <p>{{ recipient_account.account_number }}</p>
+                </div>
+            </div>
+            <a href="{% url "receive1" %}" class="choose-btn">Edit</a>
+        </div>
+
+        <form action="" class="transfer-form" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="recipient_account_number" value="{{ recipient_account.account_number }}">
+            <div class="amount-details">
+                <div class="amount-item">
+                    <label for="amount">How much do you want to receive?</label>
+                    <input type="number" onkeyup="CalculateBalance()" id="input-amount" name="amount" placeholder="100.00 - 5,000,000.00" min="100.00" max="5000000" required>
+                </div>
+                <div class="amount-item">
+                    <label for="description">Description</label>
+                    <input type="text" name="description" placeholder="Enter description here" required>
+                </div>
+                <div class="amount-item">
+                    <label for="date">Payment due by</label>
+                    <input type="date" name="payment-due">
+                </div>
+            </div>
+
+        <div class="transfer-btn">
+            <a href="{% url "receive1" %}" class="previous-btn">Previous</a>
+            <button type="submit" class="next-btn">Next</button>
+        </div>
+        </form>
+
+    </div>
+
+</section>
+
+
+{% endblock contents %}

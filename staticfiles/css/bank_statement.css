@@ -1,0 +1,211 @@
+@page {
+    size: A4;
+    margin: 2rem; /* Adjust margins as needed */
+}
+
+body {
+    overflow-x: hidden;
+}
+#logo-section {
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-top: 2rem;
+    max-width: 90rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#logo-section img {
+    width: 7rem;
+}
+
+.customer-details {
+    display: flex;
+    padding: 2rem;
+    justify-content: space-between;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    width: 82rem;
+    margin-top: 3rem;
+    background-color: rgb(237, 238, 240);
+}
+
+.customer-details .sec1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.customer-details .sec2 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.statement-title {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-top: 3rem;
+}
+
+
+#trans-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+    width: 100vw;
+    margin-top: 3rem;
+}
+
+#trans-section .trans-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 0rem;
+}
+
+#trans-section .trans-head .date {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    padding: 0.8rem;
+    border: 5rem;
+    width: 8rem;
+    border: 1px solid var(--Grey, #6C757D);
+    background-color: black;
+}
+
+#trans-section .trans-head .date p {
+    color: white
+}
+
+#trans-section .trans-head .reference {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    padding: 0.8rem;
+    border: 5rem;
+    width: 8rem;
+    border: 1px solid var(--Grey, #6C757D);
+    background-color: black;
+}
+
+#trans-section .trans-head .reference p {
+    color: white
+}
+
+#trans-section .trans-head .branch {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    padding: 0.8rem;
+    border: 5rem;
+    width: 12rem;
+    border: 1px solid var(--Grey, #6C757D);
+    background-color: black;
+}
+
+#trans-section .trans-head .branch p {
+    color: white
+}
+
+#trans-section .trans-head .description {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    padding: 0.8rem;
+    border: 5rem;
+    width: 20rem;
+    border: 1px solid var(--Grey, #6C757D);
+    background-color: black;
+}
+
+#trans-section .trans-head .description p {
+    color: white
+}
+
+
+
+#trans-section2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+    width: 100vw;
+}
+
+#trans-section2 .trans-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 0rem;
+}
+
+#trans-section2 .trans-head .date {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    padding: 0.8rem;
+    border: 5rem;
+    width: 8rem;
+    border: 1px solid var(--Grey, #6C757D);
+}
+
+#trans-section2 .trans-head .date p {
+   font-weight: 400;
+}
+
+#trans-section2 .trans-head .reference {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    padding: 0.8rem;
+    border: 5rem;
+    width: 8rem;
+    border: 1px solid var(--Grey, #6C757D);
+}
+
+#trans-section2 .trans-head .reference p {
+   font-weight: 400;
+}
+
+#trans-section2 .trans-head .branch {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    padding: 0.8rem;
+    border: 5rem;
+    width: 12rem;
+    border: 1px solid var(--Grey, #6C757D);
+}
+
+
+#trans-section2 .trans-head .description {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    padding: 0.8rem;
+    border: 5rem;
+    width: 20rem;
+    border: 1px solid var(--Grey, #6C757D);
+}
+
+#trans-section2 .trans-head .description p {
+    font-weight: 400;
+}
+
+.footer {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 3rem;
+}

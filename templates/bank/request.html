@@ -1,0 +1,150 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Payment Requests{% endblock page_title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+<link rel="stylesheet" href="{% static "css/request.css" %}">
+
+{% endblock css_files %}
+
+
+{% block contents %}
+{% include "includes/error_alert.html" %}
+
+<section id="menu-options">
+    <a href=""><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+    <ul class="menu-items">
+        <li><a class="current-item2" href="{% url "dashboard" %}"><i class="fa-solid fa-archway"></i>Dashboard</a></li>
+        <li><a class="current-item2" href="{% url "transfer1" %}"><i class="fa-regular fa-paper-plane"></i> Transfer</a></li>
+        <li><a class="current-item2" href="{% url "receive1" %}"><i class="fa-solid fa-money-bill-transfer"></i>Receive</a></li>
+        <li><a class="current-item2" href="{% url "transaction" %}"><i class="fa-solid fa-receipt"></i>Transactions</a></li>
+        <li><a class="current-item2" href="{% url "account" %}"><i class="fa-regular fa-user"></i>Account</a></li>
+        <li><a class="current-item2" href=""><i class="fa-solid fa-headset"></i>Support</a></li>
+        <li><a class="current-item2" href="{% url "logout" %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
+
+</section>
+{% include "includes/nav.html" %}
+
+<section id="transaction1">
+    <div class="trans-head">
+        <h4>Payment Requests</h4>
+        <div>
+            <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+            <input type="text" name="trans-search" placeholder="Search by name, transaction number or description">
+        </div>
+    </div>
+    <div class="trans-box1">
+        <div class="box-head">
+            <ul class="all-links">
+                <li><a href="" class="current-link">All</a></li>
+                <li><a href="">Sent</a></li>
+                <li><a href="">Received</a></li>
+            </ul>
+
+        </div>
+
+        <div class="filter-options">
+            <input type="date">
+            <select name="other-sort" id="">
+                <option value="Balance">Balance</option>
+                <option value="Balance">Status</option>
+            </select>
+            <button>Search</button>
+            <a href="" class="clear">Clear Filters</a>
+        </div>
+
+        <div class="list-sec">
+            <ul class="list-head">
+                <li class="name">Name/Business</li>
+                <li class="des">Description</li>
+                <li class="date">Payment Due</li>
+                <li class="status">Status</li>
+                <li class="trans">Amount</li>
+                <li class="date">Proofs</li>
+                <li class="amount">Action</li>
+            </ul>
+            {% if requests %}
+            {% for new_request in requests %}
+            <div class="trans-details">
+            <div class="list-head">
+                <div class="name">
+                    {% if new_request.sender_account == account %}
+                    <p><b>{{ new_request.receiver_account.account_name }}</b></p>
+                    {% else %}
+                    <p><b>{{ new_request.sender_account.account_name }}</b></p>
+                    {% endif %}
+                </div>
+                <div class="des">
+                    <p><b>{{ new_request.description }}</b></p>
+                </div>
+                <div class="date">
+                    <p>{{ new_request.payment_due_by|date:"M dS, Y" }}</p>
+                </div>
+                <div class="status">
+                    <p><b>{{ new_request.status|capfirst }}</b></p>
+                </div>
+                <div class="trans">
+                    <p><b>N{{ new_request.amount|floatformat:"0g" }}</b></p>
+                </div>
+                <div class="date">
+                    {% if new_request.proof_doc1 %}
+                    <a href="{% url "file_download1" new_request.request_id %}" style="color: #C30;"><p><b>Proof 1</b></p></a>
+                    {% else %}
+                    <p><b>No file</b></p>
+                    {% endif %}
+                    {% if new_request.proof_doc2 %}
+                    <a href="{% url "file_download2" new_request.request_id %}" style="color: #C30;"><p><b>Proof 2</b></p></a>
+                    {% else %}
+                    <p><b>No file</b></p>
+                    {% endif %}
+                    {% if new_request.proof_doc3 %}
+                    <a href="{% url "file_download3" new_request.request_id %}" style="color: #C30;"><p><b>Proof 3</b></p></a>
+                    {% else %}
+                    <p><b>No file</b></p>
+                    {% endif %}
+                </div>
+                <div class="amount">
+                    {% if new_request.receiver_account == account and new_request.status == "request" %}
+                    <div class="settle-and-cancel">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="settle-request" value="{{ new_request.request_id }}">
+                        <button type="submit" class="settle-btn"><i class="fa-regular fa-circle-check"></i> Settle</button>
+                    </form>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="cancel-request" value="{{ new_request.request_id }}">
+                        <button class="cancel-btn" type="submit"><i class="fa-solid fa-xmark"></i> Cancel</button>
+                    </form>
+                    </div>
+                    {% else %}
+                        {% if new_request.sender_account == account  %}
+                            <p><b>Sent Request</b></p>
+                        {% else %}
+                            <p><b>{{ new_request.status|capfirst }}</b></p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>You have no request history currently! Send a request today.</p>
+            {% endif %}
+            
+        </div>
+
+        <div class="page-buttons">
+            <div><p class="current-page">1</p></div>
+            <div><p class="page">2</p></div>
+            <div><p class="page">3</p></div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock contents %}

@@ -1,0 +1,293 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Banking Hall{% endblock page_title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/create_pin.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+{% include "includes/error_alert.html" %}
+{% comment "" %}Card Full View Section{% endcomment %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+<div id="transfer-box3">
+<div id="confirm-dialog3"></div>
+    <div class="confirm-transfer">
+        <div class="top-sec">
+            <h5>Create Transaction Pin!</h5>
+            <a href="{% url "dashboard" %}" id="cancel-btn"><i class="fa-solid fa-xmark" style="color: #000000;"></i></a>
+        </div>
+        <p class="trans-text">You are required to create a <b>four digit</b> transaction PIN to use for transactions in the bank:</p>
+        <div class="pin-box">
+            <div class="pin-sec">
+                <p>New PIN</p>
+                <input type="password" name="pin-code1" maxlength="4" required>
+            </div>
+            <div class="pin-sec">
+                <p>Confirm PIN</p>
+                <input type="password" name="pin-code2" maxlength="4" required>
+            </div>
+        </div>
+        
+        {% if error_length %}
+        <p id="error-text">{{ error_length }}</p>
+        {% endif %}
+
+        {% if error_value %}
+        <p id="error-text">{{ error_value }}</p>
+        {% endif %}
+        
+
+        <button class="confirm-btn">Create PIN</button>
+    </div>
+
+</div>
+</form>
+
+<script>
+
+</script>
+
+
+
+<section id="menu-options">
+    <a href=""><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+    <ul class="menu-items">
+        <li><a class="current-item2" href=""><i class="fa-solid fa-archway"></i>Dashboard</a></li>
+        <li><a class="current-item2" href="{% url "transfer1" %}"><i class="fa-regular fa-paper-plane"></i> Transfer</a></li>
+        <li><a class="current-item2" href="{% url "receive1" %}"><i class="fa-solid fa-money-bill-transfer"></i>Receive</a></li>
+        <li><a class="current-item2" href="{% url "transaction" %}"><i class="fa-solid fa-receipt"></i>Transactions</a></li>
+        <li><a class="current-item2" href="{% url "account" %}"><i class="fa-regular fa-user"></i>Account</a></li>
+        <li><a class="current-item2" href=""><i class="fa-solid fa-headset"></i>Support</a></li>
+        <li><a class="current-item2" href="{% url "logout" %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
+
+</section>
+{% include "includes/nav.html" %}
+
+<section id="dashboard">
+    <div class="left-section">
+        <div class="amount-box">
+            <div class="money-sec">
+                <div class="amount-left">
+                    <div class="amount1">
+                        <h5 id="account-balance">N10,000,000.00</h5>
+                        <button type="button" id="hide-btn"><i class="fa-regular fa-eye-slash" style="color: #ffffff;"></i></button>
+                        <button type="button" id="show-btn"><i class="fa-regular fa-eye" style="color: #ffffff;"></i></button>
+                    </div>
+                    <p>Last received: N125,000.00</p>
+                </div>
+
+                <div class="amount-right">
+                    <h6><i class="fa-solid fa-naira-sign" style="color: #fcfcfc;"></i>1,200,000.00</h6>
+                    <p>Payouts: N1,255,000.00</p>
+                </div>
+            </div>
+
+            <div class="btn-and-accno">
+                <div class="box-btn">
+                    <a href="{% url "transfer1" %}">Transfer cash</a>
+                    <a href="{% url "receive1" %}">Request payment</a>
+                </div>
+                <div class="accno">
+                    <p>Account Number</p>
+                    <div class="account-num">
+                        <i class="fa-regular fa-copy" style="color: #ffffff;"></i>
+                        <p id="account-number">22145678521</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="transaction-box">
+            <div class="trans-head">
+                <div class="trans-head-left">
+                    <h6>Transactions</h6>
+                    <p>Updated every minutes</p>
+                </div>
+                <a href="">View All <i class="fa-solid fa-chevron-right" style="color: #050505;"></i></a>
+            </div>
+
+            <div class="trans-list">
+                <div class="list-head">
+                    <p class="name">Name/Business</p>
+                    <p class="date">Date</p>
+                    <p class="status">Status</p>
+                    <p class="amount">Amount</p>
+                </div>
+
+                <div class="transaction">
+                    <div class="name">
+                        <h5>Ron Stewart</h5>
+                        <p>Cash transfer</p>
+                    </div>
+                    <div class="date">
+                        <h5>03:00 PM</h5>
+                        <p>10 Dec, 2023</p>
+                    </div>
+                    <div class="status">
+                        <h5>Processing</h5>
+                    </div>
+                    <div class="amount">
+                        <h5>-N20,000.00</h5>
+                        <p>- N50</p>
+                    </div>
+                </div>
+                <div class="transaction">
+                    <div class="name">
+                        <h5>Ron Stewart</h5>
+                        <p>Cash transfer</p>
+                    </div>
+                    <div class="date">
+                        <h5>03:00 PM</h5>
+                        <p>10 Dec, 2023</p>
+                    </div>
+                    <div class="status">
+                        <h5>Processing</h5>
+                    </div>
+                    <div class="amount">
+                        <h5>-N20,000.00</h5>
+                        <p>- N50</p>
+                    </div>
+                </div>
+                <div class="transaction">
+                    <div class="name">
+                        <h5>Ron Stewart</h5>
+                        <p>Cash transfer</p>
+                    </div>
+                    <div class="date">
+                        <h5>03:00 PM</h5>
+                        <p>10 Dec, 2023</p>
+                    </div>
+                    <div class="status">
+                        <h5>Processing</h5>
+                    </div>
+                    <div class="amount">
+                        <h5>-N20,000.00</h5>
+                        <p>- N50</p>
+                    </div>
+                </div>
+                <div class="transaction">
+                    <div class="name">
+                        <h5>Ron Stewart</h5>
+                        <p>Cash transfer</p>
+                    </div>
+                    <div class="date">
+                        <h5>03:00 PM</h5>
+                        <p>10 Dec, 2023</p>
+                    </div>
+                    <div class="status">
+                        <h5>Processing</h5>
+                    </div>
+                    <div class="amount">
+                        <h5>-N20,000.00</h5>
+                        <p>- N50</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="right-section">
+        <div class="credit-card">
+            <h5>Linked Payment System</h5>
+            <div class="all-cards">
+                <div id="card">
+                    <div class="logo">
+                        <h6>Credit Card</h6>
+                        <img src="{% static "images/flybank-logo2.png" %}" alt="">
+                    </div>
+                    <div class="card-circuit">
+                        <img src="{% static "images/card-circuit.png" %}" alt="">
+                        <p class="card-bal">N 2,000.00</p>
+                        <img src="{% static "images/mscard-logo.png" %}" alt="">
+                    </div>
+                    <div class="card-number">
+                        <p>0123</p>
+                        <p>4567</p>
+                        <p>8910</p>
+                        <p>0123</p>
+                    </div>
+                    <div class="card-bottom">
+                        <p class="card-name">JOHN PAUL</p>
+                        <div class="expiry-date">
+                            <p class="expiry">Expiry date</p>
+                            <p class="date">03/23</p>
+                        </div>
+                        <div class="expiry-date">
+                            <p class="expiry">Issue date</p>
+                            <p class="date">14/03/23</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="add-card">
+                    <i class="fa-solid fa-plus" style="color: #050505;"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="request-box">
+            <div class="request-head">
+                <h6>Payment Requests</h6>
+                <a href="{% url "request" %}">View All <i class="fa-solid fa-chevron-right" style="color: #050505;"></i></a>
+            </div>
+
+            <div class="all-requests">
+                <div class="request">
+                    <img src="{% static "images/profile-pic.png" %}" alt="">
+                    <div class="name-and-date">
+                        <h5>Moses Paul</h5>
+                        <p>08:00 AM - 19th of Dec</p>
+                    </div>
+                    <div class="amount">
+                        <h5>N25,00000</h5>
+                        <p>Pending</p>
+                    </div>
+                </div>
+                <div class="request">
+                    <img src="{% static "images/profile-pic.png" %}" alt="">
+                    <div class="name-and-date">
+                        <h5>Moses Paul</h5>
+                        <p>08:00 AM - 19th of Dec</p>
+                    </div>
+                    <div class="amount">
+                        <h5>N25,00000</h5>
+                        <p>Pending</p>
+                    </div>
+                </div>
+                <div class="request">
+                    <img src="{% static "images/profile-pic.png" %}" alt="">
+                    <div class="name-and-date">
+                        <h5>Moses Paul</h5>
+                        <p>08:00 AM - 19th of Dec</p>
+                    </div>
+                    <div class="amount">
+                        <h5>N25,00000</h5>
+                        <p>Pending</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+{% endblock contents %}

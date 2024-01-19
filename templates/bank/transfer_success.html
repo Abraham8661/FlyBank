@@ -1,0 +1,53 @@
+{% extends "bankhall/base.html" %}
+{% load static %}
+
+
+{% block page_title %}Transfer Success{% endblock page_title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "css/dashboard.css" %}">
+<link rel="stylesheet" href="{% static "css/transfer3.css" %}">
+<link rel="stylesheet" href="{% static "css/transfer_success.css" %}">
+{% endblock css_files %}
+
+
+{% block contents %}
+{% include "includes/error_alert.html" %}
+
+<section id="menu-options">
+    <a href=""><img src="{% static "images/flybank-logo.png" %}" alt=""></a>
+    <ul class="menu-items">
+        <li><a class="current-item2" href="{% url "dashboard" %}"><i class="fa-solid fa-archway"></i>Dashboard</a></li>
+        <li><a class="current-item" href="{% url "transfer1" %}"><i class="fa-regular fa-paper-plane"></i> Transfer</a></li>
+        <li><a class="current-item2" href="{% url "receive1" %}"><i class="fa-solid fa-money-bill-transfer"></i>Receive</a></li>
+        <li><a class="current-item2" href="{% url "transaction" %}"><i class="fa-solid fa-receipt"></i>Transactions</a></li>
+        <li><a class="current-item2" href="{% url "account" %}"><i class="fa-regular fa-user"></i>Account</a></li>
+        <li><a class="current-item2" href=""><i class="fa-solid fa-headset"></i>Support</a></li>
+        <li><a class="current-item2" href="{% url "logout" %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+    </ul>
+
+</section>
+{% include "includes/nav.html" %}
+
+<section id="transfer3">
+    <div class="trans-box3">
+        <div class="trans-head">
+            <h4>Transfer Success</h4>
+        </div>
+
+        <div class="success-dialog">
+            <img src="{% static "images/success_check.png" %}" alt="">
+            <h6>Success</h6>
+            <p>Money has been sent to <b>{{ transaction.receiver_account.account_name }}</b></p>
+        </div>
+
+        
+        <div class="transfer-btn">
+            <a href="{% url "transaction" %}" class="previous-btn">View Transaction</a>
+            <a href="{% url "transfer1" %}" id="complete-btn">Make another transaction</a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock contents %}
