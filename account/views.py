@@ -341,14 +341,13 @@ def transaction_view(request):
         SEARCH_RESULT = Transaction.objects.filter(
             Q(receiver_account__account_name__icontains=SEARCH_QUERY) |
             Q(sender_account__account_name__icontains=SEARCH_QUERY) |
-            Q(transaction_id__icontains=SEARCH_QUERY) |
+            Q(transaction_id=SEARCH_QUERY) |
             Q(description__icontains=SEARCH_QUERY) 
             )
     if "date-from" and "date-to" in request.GET:
         date_start = request.GET.get("date-from")
         date_end = request.GET.get("date-to")
         other_sort = request.GET.get("other-sort")
-        print(date_start, date_end)
 
         SEARCH_RESULT = Transaction.objects.filter(
             date__gte=date_start, date__lte=date_end
