@@ -30,9 +30,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*', '127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'flybankapp-dev-tqsm.1.us-1.fl0.io']
+CSRF_TRUSTED_ORIGINS = ['https://flybankapp-dev-tqsm.1.us-1.fl0.io']
 
 
 # Application definition
